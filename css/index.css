@@ -1,0 +1,82 @@
+body{
+	background-color: #111111;
+}
+
+.d3-tip {
+	/*line-height: 1;*/
+	/*font-weight: bold;*/
+	padding: 12px;
+	background: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	border-radius: 10px;
+	font-family: 微軟正黑體;
+	line-height: 20px;
+}
+
+.org-0{
+	fill: #276fff;
+}
+
+.org-1{
+	fill: #38aa0e;
+}
+
+.org-2{
+	fill: #5ce0ff;
+}
+
+.org-3{
+	fill: #29b287;
+}
+
+.org-4{
+	fill: #6effd1;
+}
+
+.org-5{
+	fill: #70ff81;
+}
+
+.org-6{
+	fill: #fcbd3f;
+}
+
+.org-7{
+	fill: #bfff75;
+}
+
+.org-8{
+	fill: #6aa024;
+}
+
+.org-9{
+	fill: #eb75ff;
+}
+
+.org-10{
+	fill: #a240b2;
+}
+
+.org-11{
+	fill: #ff709b;
+}
+
+.org-12{
+	fill: #31a7ff;
+}
+
+.org-13{
+	fill: #b23d60;
+}
+
+.org-14{
+	fill: #ed6f4e;
+}
+
+.org-15{
+	fill: #931a11;
+}
+
+.org-16{
+	fill: #1c96b2;
+}
