@@ -22,15 +22,15 @@ body{
 }
 
 .org-2{
-	fill: #5ce0ff;
-}
-
-.org-3{
 	fill: #29b287;
 }
 
+.org-3{
+	fill: #5ce0ff;
+}
+
 .org-4{
-	fill: #6effd1;
+	fill: #eb75ff;
 }
 
 .org-5{
@@ -38,35 +38,35 @@ body{
 }
 
 .org-6{
-	fill: #fcbd3f;
+	fill: #6effd1;
 }
 
 .org-7{
-	fill: #bfff75;
-}
-
-.org-8{
-	fill: #6aa024;
-}
-
-.org-9{
-	fill: #eb75ff;
-}
-
-.org-10{
-	fill: #a240b2;
-}
-
-.org-11{
-	fill: #ff709b;
-}
-
-.org-12{
 	fill: #31a7ff;
 }
 
-.org-13{
+.org-8{
+	fill: #ff709b;
+}
+
+.org-9{
 	fill: #b23d60;
+}
+
+.org-10{
+	fill: #fcbd3f;
+}
+
+.org-11{
+	fill: #bfff75;
+}
+
+.org-12{
+	fill: #6aa024;
+}
+
+.org-13{
+	fill: #a240b2;
 }
 
 .org-14{

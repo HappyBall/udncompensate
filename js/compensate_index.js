@@ -8,7 +8,7 @@ var x = x_init;
 var y = y_init;
 var y_count = 0;
 
-var org_list = ['交通部', '國防部', '經濟部', '財政部', '內政部', '教育部', '外交部', '銓敘部', '考選部', '法務部', '科技部', '司法院', '行政院海巡署', '行政院農委會', '行政院衛生署', '行政院退輔會', '行政院原民會'];
+var org_list = ['交通部', '國防部', '財政部', '經濟部', '法務部', '教育部', '內政部', '行政院海巡署', '司法院', '行政院農委會', '外交部', '銓敘部', '考選部', '科技部', '衛生福利部', '國軍退除役官兵輔導委員會', '原住民族委員會'];
 
 var date_x_list = [];
 var date_y_list = [];
@@ -211,35 +211,35 @@ function org2Num(str){
 			return 0;
 		case "國防部":
 			return 1;
-		case "經濟部":
-			return 2;
 		case "財政部":
+			return 2;
+		case "經濟部":
 			return 3;
-		case "內政部":
+		case "法務部":
 			return 4;
 		case "教育部":
 			return 5;
-		case "外交部":
+		case "內政部":
 			return 6;
-		case "銓敘部":
-			return 7;
-		case "考選部":
-			return 8;
-		case "法務部":
-			return 9;
-		case "科技部":
-			return 10;
-		case "司法院":
-			return 11;
 		case "行政院海巡署":
-			return 12;
+			return 7;
+		case "司法院":
+			return 8;
 		case "行政院農委會":
+			return 9;
+		case "外交部":
+			return 10;
+		case "銓敘部":
+			return 11;
+		case "考選部":
+			return 12;
+		case "科技部":
 			return 13;
-		case "行政院衛生署":
+		case "衛生福利部":
 			return 14;
-		case "行政院退輔會":
+		case "國軍退除役官兵輔導委員會":
 			return 15;
-		case "行政院原民會":
+		case "原住民族委員會":
 			return 16;
 	}
 }
