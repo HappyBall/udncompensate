@@ -73,10 +73,61 @@
 </head>
 
 <body>
-	<div id = "sort-by-date"><img src="img/1.png"></div>
-	<div id = "sort-by-money"><img src="img/2.png"></div>
-	<div id = "sort-by-class"><img src="img/3.png"></div>
-	<div class = "main-chart"></div>
+	<div class = "container">
+		<div class = "sec-container">
+			<div class = "title">傳說中的國賠</div>
+			<div class = "editor-src">新媒體部/&nbsp;楊棋宇、蔡欣潔、蔡佩蓉&nbsp;&nbsp;&nbsp;製作<br>資料來源/&nbsp;</div>
+			<div class = "contents">假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文</div>
+			<div class = "icon-block">
+				<div>圖示說明</div>
+				<div class = "icon-image"><img src="img/demo.png"></div>
+				<div class = "icon-text-block">
+					<div class = "icon-text">賠款金額&nbsp;小&nbsp;</div>
+					<div class = "icon-text"><img id = "arrow-img" src="img/arrow.png"></div>
+					<div class = "icon-text" id = "icon-text-big">大</div>
+				</div>
+				<div class = "hori-line-block" id = "status-line-block">
+					<div class = "hori-line" id = "status-line"></div>
+					<div class = "hori-line-text" id = "status-line-text">半透明：受傷或受有損害<br>不透明：死亡</div>
+				</div>
+				<div class = "hori-line-block" id = "org-line-block">
+					<div class = "hori-line" id = "org-line"></div>
+					<div class = "hori-line-text" id = "org-line-text">主管機關</div>
+				</div>
+				<div class = "hori-line-block" id = "detail-line-block">
+					<div class = "hori-line" id = "detail-line"></div>
+					<div class = "hori-line-text" id = "detail-line-text">展開詳細說明</div>
+				</div>
+			</div>
+			<div class = "circle-icon"><img src="img/demo1.png"></div>
+		</div>
+		<hr>
+		<div class = "sec-container" id = "sort-btn-block">
+			<div class = "sort-btn" id = "sort-by-date">
+				<img src="img/1.png" class = "sort-btn-img">
+				<div class = "sort-btn-text">時間</div>
+			</div>
+			<div class = "sort-btn" id = "sort-by-money">
+				<img src="img/2.png" class = "sort-btn-img">
+				<div class = "sort-btn-text">賠償金額</div>
+			</div>
+			<div class = "sort-btn" id = "sort-by-class">
+				<img src="img/3.png" class = "sort-btn-img">
+				<div class = "sort-btn-text">主管機關</div>
+			</div>
+			<div class = "sort-btn" id = "sort-by-event">
+				<img src="img/4.png" class = "sort-btn-img">
+				<div class = "sort-btn-text">事件原因</div>
+			</div>
+		</div>
+		<div class = "emphasize-text-block">
+			<div class = "emphasize-text">民國94~103年</div>
+			<div class = "emphasize-text">中央機關國家賠償共389件，總金額6.79億元</div>
+		</div>
+		<div class = "main-chart"></div>
+	</div>
+
+
 	<script type="text/javascript" src="js/compensate_index.js?v1"></script>
 </body>
 </html>

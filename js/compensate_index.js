@@ -9,6 +9,7 @@ var y = y_init;
 var y_count = 0;
 
 var org_list = ['交通部', '國防部', '財政部', '經濟部', '法務部', '教育部', '內政部', '行政院海巡署', '司法院', '行政院農委會', '外交部', '銓敘部', '考選部', '科技部', '衛生福利部', '國軍退除役官兵輔導委員會', '原住民族委員會'];
+var reason_list = ['交通意外', '天災', '軍訓事故', '行政疏失', '校園管教不當', '工程意外'];
 
 var date_x_list = [];
 var date_y_list = [];
@@ -38,12 +39,18 @@ d3.csv("data/compensate_merge.csv", function(data){
 				.range([5, 50])
 				.domain([Math.sqrt(minValue), Math.sqrt(maxValue)]);
 
-	var svg = d3.select(".main-chart").append("svg").attr({'class': 'main-svg', 'width': 1200, 'height': 2000})	;
+	var svg = d3.select(".main-chart").append("svg").attr({'class': 'main-svg', 'width': 1100, 'height': 1800})	;
 
 	tip = d3.tip().attr('class', 'd3-tip')
-			.offset([0,10])
+			.offset(function(d){
+				return [200,10];
+			})
 			.direction(function(d){ return 'e'; })
-			.html(function(d) { return d.org });
+			.html(function(d) { 
+				var tip_html = "<div class = 'tip-little-title'>主管機關</div><div class = 'tip-text'><span class = 'tip-org-" + org2Num(d.org) + "'>●</span>" + d.org + "</div><div class = 'tip-little-title'>請求權人狀況</div><div class = 'tip-text'>"+ d['status'] +"</div><div class = 'tip-little-title'>撥款日期</div><div class = 'tip-text'>" + d.date + "</div><div class = 'tip-little-title'>賠償金額</div><div class = 'tip-text' id = 'tip-text-money'>" + modNum(d.money) + "</div><br><div class = 'tip-little-title'>案情摘要</div><div class = 'tip-text' id = 'tip-text-detail'>" + d.event_detail + "</div><div class = 'tip-little-title'>事件原因</div><div class = 'tip-text'>" + d.event_class + "</div>";
+				return tip_html;
+			});
+	
 
 	svg.call(tip);
 
@@ -159,14 +166,14 @@ d3.csv("data/compensate_merge.csv", function(data){
 				class_count = class_count+1;
 
 				/*if(j == class_list[org_list[i]].length - 1)
-					y_now = class_y + y_dis;
-*/			}
+					y_now = class_y + y_dis;*/
+			}
 
 			// class_count = 1;
 		}
 
-		console.log(class_x_list);
-		console.log(class_y_list);
+		// console.log(class_x_list);
+		// console.log(class_y_list);
 
 });
 
@@ -242,4 +249,25 @@ function org2Num(str){
 		case "原住民族委員會":
 			return 16;
 	}
+}
+
+function modNum(str){
+  var str1, str2, str3;
+  var finalStr;
+  if(str.length > 6){
+    str1 = str.substr(str.length - 3, 3);
+    str2 = str.substr(str.length - 6, 3);
+    str3 = str.substr(0, str.length - 6);
+    finalStr = str3 + ',' + str2 + ',' + str1;
+  }
+  else if (str.length > 3){
+    str1 = str.substr(str.length - 3, 3);
+    str2 = str.substr(0, str.length - 3);
+    finalStr = str2 + ',' + str1;
+  }
+  else{
+    finalStr = str;
+  } 
+
+  return finalStr; 
 }
