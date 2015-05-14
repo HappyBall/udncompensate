@@ -1,5 +1,7 @@
 var data_money;
 
+var row_contain = 20;
+
 var x_init = 50;
 var y_init = 50;
 var x_dis = 50;
@@ -17,12 +19,19 @@ var money_x_list = [];
 var money_y_list = [];
 var class_x_list = [];
 var class_y_list = [];
+var reason_class_x_list = [];
+var reason_class_y_list = [];
 var class_list = {};
+var reason_class_list = {};
 var class_count = 1;
+var reason_class_count = 1;
 
 //-----------------------------------------------------------------------------------------//
 for(var i = 0; i < org_list.length; i++)
 	class_list[org_list[i]] = [];
+
+for(var i = 0; i < reason_list.length; i++)
+	reason_class_list[reason_list[i]] = [];
 
 
 d3.csv("data/compensate_merge.csv", function(data){
@@ -73,7 +82,7 @@ d3.csv("data/compensate_merge.csv", function(data){
 
 			'cy': function(d){
 				y_count = y_count + 1;
-				if(y_count > 20){
+				if(y_count > row_contain){
 					y_count = 1;
 					y = y + y_dis;
 				}
@@ -120,19 +129,20 @@ d3.csv("data/compensate_merge.csv", function(data){
 			var money_x = 0;
 			var money_y = 0;
 
-			if(i%20 != 0){
-				money_x = x_init + ((i%20) - 1)*x_dis;
-				money_y = y_init + Math.floor(i/20) * y_dis;
+			if(i%row_contain != 0){
+				money_x = x_init + ((i%row_contain) - 1)*x_dis;
+				money_y = y_init + Math.floor(i/row_contain) * y_dis;
 			}
 			else{
-				money_x = x_init + 19*x_dis;
-				money_y = y_init + (Math.floor(i/20) - 1) * y_dis;
+				money_x = x_init + (row_contain - 1)*x_dis;
+				money_y = y_init + (Math.floor(i/row_contain) - 1) * y_dis;
 			}
 
 			money_x_list[data_money[i-1]['id']] = money_x;
 			money_y_list[data_money[i-1]['id']] = money_y;
 
 			class_list[data[i - 1]['org']].push(data[i - 1]);
+			reason_class_list[data[i - 1]['event_class']].push(data[i - 1]);
 		}
 
 		// console.log(money_x_list);
@@ -149,13 +159,13 @@ d3.csv("data/compensate_merge.csv", function(data){
 				var class_x = 0;
 				var class_y = 0;
 
-				if(class_count%20 != 0){
-					class_x = x_init + ((class_count%20) - 1)*x_dis;
-					class_y = y_now + Math.floor(class_count/20) * y_dis;
+				if(class_count%row_contain != 0){
+					class_x = x_init + ((class_count%row_contain) - 1)*x_dis;
+					class_y = y_now + Math.floor(class_count/row_contain) * y_dis;
 				}
 				else{
-					class_x = x_init + 19*x_dis;
-					class_y = y_now + (Math.floor(class_count/20) - 1) * y_dis;
+					class_x = x_init + (row_contain - 1)*x_dis;
+					class_y = y_now + (Math.floor(class_count/row_contain) - 1) * y_dis;
 				}
 
 				// console.log(class_list[org_list[i]][j]);
@@ -174,6 +184,27 @@ d3.csv("data/compensate_merge.csv", function(data){
 
 		// console.log(class_x_list);
 		// console.log(class_y_list);
+
+		for (var i = 0; i < Object.keys(reason_class_list).length; i++){
+			for (var j = 0; j < reason_class_list[reason_list[i]].length; j++){
+				var reason_class_x = 0;
+				var reason_class_y = 0;
+
+				if(reason_class_count%row_contain != 0){
+					reason_class_x = x_init + ((reason_class_count%row_contain) - 1)*x_dis;
+					reason_class_y = y_init + Math.floor(reason_class_count/row_contain) * y_dis;
+				}
+				else{
+					reason_class_x = x_init + (row_contain - 1)*x_dis;
+					reason_class_y = y_init + (Math.floor(reason_class_count/row_contain) - 1) * y_dis;
+				}
+
+				reason_class_x_list[reason_class_list[reason_list[i]][j]['id']] = reason_class_x;
+				reason_class_y_list[reason_class_list[reason_list[i]][j]['id']] = reason_class_y;
+
+				reason_class_count = reason_class_count + 1;
+			}
+		}
 
 });
 
@@ -210,7 +241,16 @@ $("#sort-by-class").click(function(){
 	}
 });
 
-
+$("#sort-by-reason").click(function(){
+	for(var i = 1; i <= class_x_list.length; i++){
+		d3.select('#circle-id-' + i)
+		.transition().duration(1000)
+		.attr({
+			'cx': reason_class_x_list[i],
+			'cy': reason_class_y_list[i]
+		});
+	}
+});
 
 function org2Num(str){
 	switch(str){
