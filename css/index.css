@@ -131,20 +131,27 @@ hr {
 }
 
 #sort-btn-block{
-	margin-top: 50px;
+	display: table;
+	width: 675px;
+	margin: 50px auto 0;
 }
 
 .sort-btn{
 	float: left;
 	font-family: 微軟正黑體;
 	color: #ededed;
-	font-size: 20px;
+	font-size: 30px;
 	margin-left: 6%;
 	cursor: pointer;
+	padding-bottom: 5px;
 }
 
 .sort-btn:first-child{
 	margin-left: 0;
+}
+
+#sort-by-date{
+	border-bottom: 2px solid #ededed;
 }
 
 .sort-btn-img{
@@ -154,7 +161,7 @@ hr {
 .sort-btn-text{
 	float: left;
 	margin-left: 5px;
-	margin-top: 3px;
+	margin-top: -1px;
 }
 
 .emphasize-text-block{
@@ -163,11 +170,17 @@ hr {
 
 .emphasize-text{
 	font-family: 微軟正黑體;
-	color: #ededed;
+	color: #a0a0a0;
 	font-size: 32px;
-	font-weight: bold;
+	/*font-weight: bold;*/
 	display: table;
 	margin: 10px auto 0;
+}
+
+.bigger-emphasize{
+	color: #ededed;
+	font-size: 48px;
+	font-weight: bold;
 }
 
 .main-chart{
@@ -183,7 +196,7 @@ hr {
 	/*color: #fff;*/
 	/*border-radius: 10px;*/
 	font-family: 微軟正黑體;
-	width: 200px;
+	width: 400px;
 }
 
 .tip-little-title{
@@ -209,6 +222,12 @@ hr {
 
 #tip-text-money{
 	font-size: 28px;
+}
+
+.reason-text{
+	font-size: 40px;
+	display: none;
+	font-family: 微軟正黑體;
 }
 
 .org-0{

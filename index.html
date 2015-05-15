@@ -64,8 +64,9 @@
 	<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=aw0Di1a4ZP00aY" style="display:none" height="1" width="1" alt="" /></noscript>-->
 
 	
-	<script type="text/javascript" src="js/d3.js"></script>
   	<script type="text/javascript" src="js/jquery-2.1.3.js"></script>
+  	<script type="text/javascript" src="js/d3.js"></script>
+  	<script type="text/javascript" src="js/highcharts.js"></script>
   	<script type="text/javascript" src="js/d3tip.js"></script>
 
   	<link rel="stylesheet" type="text/css" href="css/index.css">
@@ -102,7 +103,7 @@
 			<div class = "circle-icon"><img src="img/demo1.png"></div>
 		</div>
 		<hr>
-		<div class = "sec-container" id = "sort-btn-block">
+		<div id = "sort-btn-block">
 			<div class = "sort-btn" id = "sort-by-date">
 				<img src="img/1.png" class = "sort-btn-img">
 				<div class = "sort-btn-text">時間</div>
@@ -122,9 +123,11 @@
 		</div>
 		<div class = "emphasize-text-block">
 			<div class = "emphasize-text">民國94~103年</div>
-			<div class = "emphasize-text">中央機關國家賠償共389件，總金額6.79億元</div>
+			<div class = "emphasize-text">中央機關國家賠償共<span class = "bigger-emphasize">389</span>件</div>
+			<div class = "emphasize-text">總金額<span class = "bigger-emphasize">6.79</span>億元</div>
 		</div>
 		<div class = "main-chart"></div>
+		<div id = "all-money-chart"></div>
 	</div>
 
 
