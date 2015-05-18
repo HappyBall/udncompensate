@@ -521,7 +521,7 @@ d3.csv("data/compensate_merge.csv", function(data){
 
 $("#sort-by-date").click(function(){
 	if(sort_mode == 4){
-		$("svg").attr("height", 1600);
+		$(".main-svg").attr("height", 1600);
 		$("text").fadeOut(1000);
 	}
 
@@ -543,7 +543,7 @@ $("#sort-by-date").click(function(){
 
 $("#sort-by-money").click(function(){
 	if(sort_mode == 4){
-		$("svg").attr("height", 1600);
+		$(".main-svg").attr("height", 1600);
 		$("text").fadeOut(1000);
 	}
 
@@ -564,7 +564,7 @@ $("#sort-by-money").click(function(){
 
 $("#sort-by-class").click(function(){
 	if(sort_mode == 4){
-		$("svg").attr("height", 1600);
+		$(".main-svg").attr("height", 1600);
 		$("text").fadeOut(1000);
 	}
 
@@ -584,7 +584,7 @@ $("#sort-by-class").click(function(){
 });
 
 $("#sort-by-reason").click(function(){
-	$("svg").attr("height", 2250);
+	$(".main-svg").attr("height", 2250);
 	$("text").fadeIn(1000);
 
 	$("#sort-by-" + sort_btn_list[sort_mode - 1]).css("border-bottom", "none");
