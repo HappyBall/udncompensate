@@ -1,6 +1,14 @@
+header{
+	width: 100%;
+	background-color: #fff;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
 body{
 	background-color: #111111;
-	padding-top: 110px;
+	padding-top: 50px;
 	padding-bottom: 500px;
 }
 
@@ -52,7 +60,7 @@ hr {
 	color: #ededed;
 	font-size: 17px;
 	position: relative;
-	margin-top: 40px;
+	margin-top: 20px;
 }
 
 .icon-image{
@@ -102,7 +110,7 @@ hr {
 }
 
 #status-line{
-	width: 150px;
+	width: 74px;
 }
 
 #org-line{
@@ -123,11 +131,11 @@ hr {
 }
 
 #status-line-text{
-	margin-top: -17px;
+	margin-top: -5px;
 }
 
 .circle-icon{
-	margin-top: 100px;
+	margin-top: 60px;
 }
 
 #sort-btn-block{
@@ -185,7 +193,7 @@ hr {
 
 .main-chart{
 	display: table;
-	margin: 100px auto 0;
+	margin: 50px auto 0;
 }
 
 .d3-tip {
@@ -230,6 +238,11 @@ hr {
 	font-family: 微軟正黑體;
 }
 
+.highcharts-block{
+	width: 70%;
+	display: table;
+}
+
 .org-0{
 	fill: #276fff;
 }
@@ -239,7 +252,7 @@ hr {
 }
 
 .org-2{
-	fill: #29b287;
+	fill: #1FA05F;
 }
 
 .org-3{
@@ -251,7 +264,7 @@ hr {
 }
 
 .org-5{
-	fill: #70ff81;
+	fill: #ED8700;
 }
 
 .org-6{
@@ -267,7 +280,7 @@ hr {
 }
 
 .org-9{
-	fill: #b23d60;
+	fill: #af3e81;
 }
 
 .org-10{
@@ -275,7 +288,7 @@ hr {
 }
 
 .org-11{
-	fill: #cad65c;
+	fill: #bfff75;
 }
 
 .org-12{
@@ -283,11 +296,11 @@ hr {
 }
 
 .org-13{
-	fill: #a240b2;
+	fill: #8159c1;
 }
 
 .org-14{
-	fill: #ed6f4e;
+	fill: #ef5233;
 }
 
 .org-15{
@@ -295,7 +308,7 @@ hr {
 }
 
 .org-16{
-	fill: #1c96b2;
+	fill: #1873aa;
 }
 
 .tip-org-0{
@@ -307,7 +320,7 @@ hr {
 }
 
 .tip-org-2{
-	color: #29b287;
+	color: #1fa05f;
 }
 
 .tip-org-3{
@@ -319,7 +332,7 @@ hr {
 }
 
 .tip-org-5{
-	color: #70ff81;
+	color: #ED8700;
 }
 
 .tip-org-6{
@@ -335,7 +348,7 @@ hr {
 }
 
 .tip-org-9{
-	color: #b23d60;
+	color: #af3e81;
 }
 
 .tip-org-10{
@@ -343,7 +356,7 @@ hr {
 }
 
 .tip-org-11{
-	color: #cad65c;
+	color: #bfff75;
 }
 
 .tip-org-12{
@@ -351,11 +364,11 @@ hr {
 }
 
 .tip-org-13{
-	color: #a240b2;
+	color: #8159c1;
 }
 
 .tip-org-14{
-	color: #ed6f4e;
+	color: #ef5233;
 }
 
 .tip-org-15{
@@ -363,5 +376,5 @@ hr {
 }
 
 .tip-org-16{
-	color: #1c96b2;
+	color: #1873aa;
 }

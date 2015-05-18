@@ -6,7 +6,7 @@ var row_contain = 20;
 var x_init = 50;
 var y_init = 50;
 var x_dis = 50;
-var y_dis = 90;
+var y_dis = 80;
 var x = x_init;
 var y = y_init;
 var y_count = 0;
@@ -14,6 +14,9 @@ var y_count = 0;
 var org_list = ['交通部', '國防部', '財政部', '經濟部', '法務部', '教育部', '內政部', '行政院海巡署', '司法院', '行政院農委會', '外交部', '銓敘部', '考選部', '科技部', '衛生福利部', '國軍退除役官兵輔導委員會', '原住民族委員會'];
 var reason_list = ['交通意外', '天災', '軍訓事故', '行政疏失', '校園管教不當', '工程意外'];
 var sort_btn_list = ['date', 'money', 'class', 'reason'];
+var reson_littletext_event = ['187', '38', '55', '78', '7', '5'];
+var reson_littletext_money = ['2.23億', '2.21億', '1.5億', '6338萬', '1471萬', '998萬'];
+var color_list = ['#276fff','#a8ff00','#1FA05F','#5CE0FF','#EB75FF','#ED8700','#6EFFD1','#31A7FF','#FF709B','#AF3E81','#FCBD3F','#BFFF75','#6AA024','#8159C1','#EF5233','#931A11','#1873AA'];
 
 var date_x_list = [];
 var date_y_list = [];
@@ -47,39 +50,231 @@ d3.csv("data/events_and_money.csv",function(data_event_money){
 		temp_event['name'] = data_event_money[i]['org'];
 		temp_event['data'] = [];
 		temp_event['data'].push(parseInt(data_event_money[i]['events']));
+		temp_event['color'] = color_list[i];
 		all_org_event.push(temp_event);
 
 		temp_money['name'] = data_event_money[i]['org'];
 		temp_money['data'] = [];
 		temp_money['data'].push(parseInt(data_event_money[i]['money']));
+		temp_money['color'] = color_list[i];
+
 		all_org_money.push(temp_money);
 		
 	}
 
+	all_org_money.sort(function(a,b) {return b['data'][0] - a['data'][0]});
+	all_org_event.sort(function(a,b) {return b['data'][0] - a['data'][0]});
 	console.log(all_org_money);
 
 	$(function () { 
-    $('#all-money-chart').highcharts({
-        chart: {
-            type: 'column'
-        },
-        credits:{
-        	enabled: false
-        },
-        title: {
-            text: 'Fruit Consumption'
-        },
-        xAxis: {
-            categories: ['十年賠償總金額']
-        },
-        yAxis: {
-            title: {
-                text: 'Fruit eaten'
-            }
-        },
-        series: all_org_money
-    });
-});
+		Highcharts.setOptions({
+			chart: {
+	            style: {
+	                fontFamily: '微軟正黑體'
+	                // color: '#ededed'
+	            }
+	        }
+	        // colors: []
+	    });
+
+	    $('#all-event-chart').highcharts({
+	        chart: {
+	        	backgroundColor: '#111111',
+	            type: 'column'
+	        },
+	        credits:{
+	        	enabled: false
+	        },
+	        title: {
+	            text: '各中央機關10年國賠件數',
+	            style:{
+	            	color: '#ededed'
+	            }
+	        },
+	        xAxis: {
+	            categories: ['各中央機關']
+	        },
+	        yAxis: {
+	            title: {
+	                text: '件',
+	                style: {
+	                	color: '#ededed'
+	                },
+	                rotation: 0
+	            },
+	            type: 'linear'
+	        },
+	        series: all_org_event,
+	        legend:{
+	        	itemStyle:{
+	        		color: '#ededed'
+	        	},
+	            itemHoverStyle: {
+	                color: '#ededed'
+	            },
+	            itemMarginTop: 10
+	        }
+
+	    });
+
+	    $('#all-money-chart').highcharts({
+	        chart: {
+	        	backgroundColor: '#111111',
+	            type: 'column'
+	        },
+	        credits:{
+	        	enabled: false
+	        },
+	        title: {
+	            text: '各中央機關10年國賠金額',
+	            style:{
+	            	color: '#ededed'
+	            }
+	        },
+	        xAxis: {
+	            categories: ['各中央機關']
+	        },
+	        yAxis: {
+	            title: {
+	                text: '元',
+	                style: {
+	                	color: '#ededed'
+	                },
+	                rotation: 0
+	            },
+	            type: 'logarithmic',
+	            tickInterval: 1
+	        },
+	        series: all_org_money,
+	        legend:{
+	        	itemStyle:{
+	        		color: '#ededed'
+	        	},
+	            itemHoverStyle: {
+	                color: '#ededed'
+	            },
+	            itemMarginTop: 10
+	        }
+	    });
+	});
+
+	$(function () {
+	    $('#all-event-statistic').highcharts({
+	        chart: {
+	            type: 'bar',
+	            backgroundColor: '#111111'
+	        },
+	        credits:{
+	        	enabled: false
+	        },
+	        title: {
+	            text: 'Stacked bar chart',
+	            style:{
+	            	color: '#ededed'
+	            }
+	        },
+	        xAxis: {
+	            categories: ['全國', '中央機關']
+	        },
+	        yAxis: {
+	            min: 0,
+	            title: {
+	                text: ''
+	            }
+	        },
+	        legend: {
+	            reversed: true,
+	            itemStyle:{
+	            	'color':'#ededed'
+	            },
+	            itemHoverStyle: {
+	                color: '#ededed'
+	            }
+	        },
+	        plotOptions: {
+	            series: {
+	                stacking: 'normal'
+	            }
+	        },
+	        series: [{
+	            name: '賠償件數',
+	            color: '#80ABE8',
+	            data: [5618, 721]
+	        }, {
+	            name: '受理件數',
+	            color: '#80E8B1',
+	            data: [40845, 10926]
+	        }]
+	    });
+
+	    $('#all-event-statistic-yr').highcharts({
+	    	chart: {
+	    		backgroundColor: '#111111'
+	    	},
+	    	credits:{
+	        	enabled: false
+	        },
+	        title: {
+	            text: '各中央機關10年國賠件數與各中央機關10年國賠金',
+	            style:{
+	            	color: '#ededed'
+	            },
+	            x: -20 //center
+	        },
+	       /* subtitle: {
+	            text: 'Source: WorldClimate.com',
+	            x: -20
+	        },*/
+	        xAxis: {
+	            categories: ['71', '72', '73', '74', '75', '76','77', '78', '79', '80', '81', '82','83', '84', '85', '86', '87', '88', '89', '90','91', '92', '93','94', '95', '96','97', '98', '99','100', '101', '102','103']
+	        },
+	        yAxis: {
+	            title: {
+	                text: '件',
+	                style: {
+	                	color: '#ededed'
+	                },
+	                rotation: 0
+	            },
+	            plotLines: [{
+	                value: 0,
+	                width: 1,
+	                color: '#808080'
+	            }]
+	        },
+	        tooltip: {
+	            valueSuffix: '件'
+	        },
+	        legend: {
+	            borderWidth: 0,
+	            itemStyle:{
+	            	color: '#ededed'
+	            },
+	            itemHoverStyle: {
+	                color: '#ededed'
+	            }
+	        },
+	        series: [{
+	            color:'#9B5C32',
+	            name: '全國新收案件數',
+	            data: [405,324,455,382,366,345,430,528,457,464,667,687,912,881,1068,1242,1128,1305,2012,1728,1206,1883,2002,1794,1419,2344,1990,1886,2469,1719,2220,1951,2176]
+	        }, {
+	            name: '全國總賠償件數',
+	             color:'#228B99',
+	            data: [20,33,138,45,60,76,85,137,97,118,127,130,161,173,136,117,157,124,234,192,186,234,191,258,236,214,261,264,331,280,292,259,252]
+	        }, {
+	            name: '中央機關新收案件數',
+	            color:'#FFBD48',
+	            data: [89,48,43,44,38,50,61,68,61,66,45,85,115,97,186,138,163,174,647,618,400,425,442,544,438,1193,743,700,646,639,643,601,676]
+	        }, {
+	            name: '中央機關總賠償件數',
+	             color:'#66CFDD',
+	            data: [0,2,1,1,3,0,5,12,4,13,9,11,5,6,12,4,9,5,56,69,48,31,26,51,15,36,37,43,48,77,32,23,27]
+	        }]
+	    });
+
+	});
+
 });
 
 d3.csv("data/compensate_merge.csv", function(data){
@@ -96,11 +291,12 @@ d3.csv("data/compensate_merge.csv", function(data){
 				.range([5, 50])
 				.domain([Math.sqrt(minValue), Math.sqrt(maxValue)]);
 
-	var svg = d3.select(".main-chart").append("svg").attr({'class': 'main-svg', 'width': 1100, 'height': 1800})	;
+	var svg = d3.select(".main-chart").append("svg").attr({'class': 'main-svg', 'width': 1100, 'height': 1600})	;
 
 	tip = d3.tip().attr('class', 'd3-tip')
 			.offset(function(d){
 				var this_x = 0;
+
 				if(sort_mode == 1)
 					this_x = date_x_list[d['id']];
 				else if(sort_mode == 2)
@@ -112,7 +308,7 @@ d3.csv("data/compensate_merge.csv", function(data){
 
 
 				if(this_x + $(".d3-tip").width() + 250 > $(window).width())
-					return [200,-30];
+					return [200,-20];
 				else
 					return [200,10]; 
 			})
@@ -304,12 +500,28 @@ d3.csv("data/compensate_merge.csv", function(data){
 				'y': reason_text_y_list[i],
 				'fill': "#ededed"
 			});
+
+			svg.append("text").text(reson_littletext_event[i] + '件')
+			.attr({
+				'class': "reason-text",
+				'x': 30 + reason_list[i].length*40 + 30,
+				'y': reason_text_y_list[i],
+				'fill': "#ededed"
+			});
+
+			svg.append("text").text('賠償金額' + reson_littletext_money[i] + '元')
+			.attr({
+				'class': "reason-text",
+				'x': 30 + reason_list[i].length*40 + 30 + reson_littletext_event[i].length*25 + 70,
+				'y': reason_text_y_list[i],
+				'fill': "#ededed"
+			});
 		}
 });
 
 $("#sort-by-date").click(function(){
 	if(sort_mode == 4){
-		$("svg").attr("height", 1800);
+		$("svg").attr("height", 1600);
 		$("text").fadeOut(1000);
 	}
 
@@ -331,7 +543,7 @@ $("#sort-by-date").click(function(){
 
 $("#sort-by-money").click(function(){
 	if(sort_mode == 4){
-		$("svg").attr("height", 1800);
+		$("svg").attr("height", 1600);
 		$("text").fadeOut(1000);
 	}
 
@@ -352,7 +564,7 @@ $("#sort-by-money").click(function(){
 
 $("#sort-by-class").click(function(){
 	if(sort_mode == 4){
-		$("svg").attr("height", 1800);
+		$("svg").attr("height", 1600);
 		$("text").fadeOut(1000);
 	}
 
@@ -372,7 +584,7 @@ $("#sort-by-class").click(function(){
 });
 
 $("#sort-by-reason").click(function(){
-	$("svg").attr("height", 2450);
+	$("svg").attr("height", 2250);
 	$("text").fadeIn(1000);
 
 	$("#sort-by-" + sort_btn_list[sort_mode - 1]).css("border-bottom", "none");
