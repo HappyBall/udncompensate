@@ -204,7 +204,27 @@ d3.csv("data/events_and_money.csv",function(data_event_money){
 	            name: '受理件數',
 	            color: '#80E8B1',
 	            data: [40845, 10926]
-	        }]
+	        }],
+	        labels: {
+	        	items: [{
+	        		html: '<div>成功比率</div><div>14%</div>',
+	        		style:{
+	        			left: '500px',
+	        			top: '140px'
+	        		}
+	        	},
+	        	{
+	        		html: '<div>成功比率</div><div>7%</div>',
+	        		style:{
+	        			left: '200px',
+	        			top: '210px'
+	        		}
+	        	}],
+	        	style: {
+	        		color: '#ededed',
+	        		'font-size': '25px'
+	        	}
+	        }
 	    });
 
 	    $('#all-event-statistic-yr').highcharts({
