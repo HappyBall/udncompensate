@@ -208,6 +208,27 @@ hr {
 	margin-top: -1px;
 }
 
+.scale-btn-block{
+	display: table;
+	width: 675px;
+	margin: 50px auto 0;
+}
+
+.scale-btn{
+	float: left;
+	font-family: 微軟正黑體;
+	color: #ededed;
+	font-size: 30px;
+	margin-left: 6%;
+	cursor: pointer;
+	padding-bottom: 5px;
+}
+
+#scale-btn-1{
+	margin-left: 0;
+	border-bottom: 2px solid #ededed;
+}
+
 .emphasize-text-block{
 	margin-top: 50px;
 }

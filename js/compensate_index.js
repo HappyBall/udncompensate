@@ -36,6 +36,12 @@ var reason_class_count = 1;
 var all_org_event = [];
 var all_org_money = [];
 
+var rScale;
+var rScale_linear;
+var rScale_logarithm;
+var all_rValue_list = [];
+var scale_now = 1;
+
 //-----------------------------------------------------------------------------------------//
 for(var i = 0; i < org_list.length; i++)
 	class_list[org_list[i]] = [];
@@ -325,9 +331,17 @@ $(document).ready(function(){
 		var maxValue = d3.max(data, function(d){return parseInt(d.money)});
 		var minValue = d3.min(data, function(d){return parseInt(d.money)});
 
-		var rScale = d3.scale.linear()
+		rScale = d3.scale.sqrt()
 					.range([5, 50])
-					.domain([Math.sqrt(minValue), Math.sqrt(maxValue)]);
+					.domain([minValue, maxValue]);
+
+		rScale_linear = d3.scale.linear()
+					.range([5, 50])
+					.domain([minValue, maxValue]); 	
+
+		rScale_logarithm = d3.scale.log()
+					.range([5, 50])
+					.domain([minValue, maxValue]);		
 
 		var svg = d3.select(".main-chart").append("svg").attr({'class': 'main-svg', 'width': 1100, 'height': 1600})	;
 
@@ -403,7 +417,8 @@ $(document).ready(function(){
 				},
 
 				'r': function(d){
-					return rScale(Math.sqrt(parseInt(d.money)));
+					all_rValue_list[d['id']] = parseInt(d.money);
+					return rScale(parseInt(d.money));
 				}
 			})
 			.style({
@@ -555,6 +570,8 @@ $(document).ready(function(){
 					'fill': "#ededed"
 				});
 			}
+
+			console.log(all_rValue_list);
 	});
 
 	$("#sort-by-date").click(function(){
@@ -630,7 +647,7 @@ $(document).ready(function(){
 		sort_mode = 4;
 		$("#sort-by-" + sort_btn_list[sort_mode - 1]).css("border-bottom", "2px solid #ededed");
 
-		for(var i = 1; i <= class_x_list.length; i++){
+		for(var i = 1; i <= reason_class_x_list.length; i++){
 			d3.select('#circle-id-' + i)
 			.transition().duration(1000)
 			.attr({
@@ -647,6 +664,41 @@ $(document).ready(function(){
 		$('html, body').animate({
 			scrollTop: ($("#" + scroll_ID_list[s - 1]).offset().top-90)
 		}, 700);	    
+	});
+
+	$(".scale-btn").click(function(){
+		var s = parseInt($(this).attr('id').split('-')[2]);
+		$('#scale-btn-' + scale_now).css("border-bottom", "none");
+		scale_now = s;
+		$('#scale-btn-' + scale_now).css("border-bottom", "2px solid #ededed");
+
+		if(scale_now == 1){
+			for (var i = 1; i <= all_rValue_list.length; i++){
+				d3.select('#circle-id-' + i)
+				.transition().duration(1000)
+				.attr({
+					'r': rScale(all_rValue_list[i]),
+				});
+			}
+		}
+		else if(scale_now == 2){
+			for (var i = 1; i <= all_rValue_list.length; i++){
+				d3.select('#circle-id-' + i)
+				.transition().duration(1000)
+				.attr({
+					'r': rScale_linear(all_rValue_list[i]),
+				});
+			}
+		}
+		else{
+			for (var i = 1; i <= all_rValue_list.length; i++){
+				d3.select('#circle-id-' + i)
+				.transition().duration(1000)
+				.attr({
+					'r': rScale_logarithm(all_rValue_list[i]),
+				});
+			}
+		}
 	});
 
 
