@@ -17,7 +17,7 @@ var sort_btn_list = ['date', 'money', 'class', 'reason'];
 var reson_littletext_event = ['187', '38', '55', '78', '7', '5'];
 var reson_littletext_money = ['2.23億', '2.21億', '1.5億', '6338萬', '1471萬', '998萬'];
 var color_list = ['#276fff','#a8ff00','#1FA05F','#5CE0FF','#EB75FF','#ED8700','#6EFFD1','#31A7FF','#FF709B','#AF3E81','#FCBD3F','#BFFF75','#6AA024','#8159C1','#EF5233','#931A11','#1873AA'];
-var scroll_ID_list = ['sort-btn-block', 'debate-cases'];
+var scroll_ID_list = ['sort-btn-block', 'debate-cases', 'last-highcharts-container'];
 
 var date_x_list = [];
 var date_y_list = [];
@@ -194,7 +194,10 @@ $(document).ready(function(){
 		        yAxis: {
 		            min: 0,
 		            title: {
-		                text: ''
+		                text: '件',
+		                style:{
+		                	'color': "#ededed"
+		                }
 		            }
 		        },
 		        legend: {

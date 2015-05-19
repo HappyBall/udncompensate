@@ -241,6 +241,7 @@ hr {
 	/*border-radius: 10px;*/
 	font-family: 微軟正黑體;
 	width: 400px;
+	z-index: 20;
 }
 
 .tip-little-title{
@@ -344,6 +345,42 @@ hr {
 	font-size: 20px;
 	line-height: 30px;
 	margin-top: 20px;
+}
+
+#last-highcharts-container{
+	margin-top: 100px;
+}
+
+.last-highcharts-title{
+	font-size: 30px;
+	font-weight: bold;
+	font-family: 微軟正黑體;
+	color: #ededed;
+	display: table;
+	margin: auto;
+}
+
+.last-highcharts-block{
+	display: table;
+	margin-top: 50px;
+	width: 100%;
+
+}
+
+.highcharts-block-last{
+	width: 49%;
+	display: table;
+	float: left;
+}
+
+.last-highcharts-text{
+	width: 100%;
+	/*float: left;*/
+	font-size: 20px;
+	font-family: 微軟正黑體;
+	line-height: 30px;
+	color: #ededed;
+	margin-top: 30px;
 }
 
 .org-0{
