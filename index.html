@@ -68,39 +68,25 @@
   	<script type="text/javascript" src="js/d3.js"></script>
   	<script type="text/javascript" src="js/highcharts.js"></script>
   	<script type="text/javascript" src="js/d3tip.js"></script>
-
+  	<script type="text/javascript" src="js/compensate_index.js"></script>
   	<link rel="stylesheet" type="text/css" href="css/index.css">
 
 </head>
 
 <body>
 	<div class = "container">
-		<header>jwiefwjeofwef</header>
+		<header>
+			<div class = "header-container">
+				<div class = "header-logo"><img id = "header-newmedia-logo" src="img/logo.png"></div>
+				<div class = "header-nav" id = "header-nav-3">國賠成功率</div>
+				<div class = "header-nav" id = "header-nav-2">重大國賠案</div>
+				<div class = "header-nav" id = "header-nav-1">總覽</div>
+			</div>
+		</header>
 		<div class = "sec-container">
 			<div class = "title">傳說中的國賠</div>
-			<div class = "contents">假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文</div>
-			<div class = "icon-block">
-				<div>圖示說明</div>
-				<div class = "icon-image"><img src="img/demo.png"></div>
-				<div class = "icon-text-block">
-					<div class = "icon-text">賠款金額&nbsp;小&nbsp;</div>
-					<div class = "icon-text"><img id = "arrow-img" src="img/arrow.png"></div>
-					<div class = "icon-text" id = "icon-text-big">大</div>
-				</div>
-				<div class = "hori-line-block" id = "status-line-block">
-					<div class = "hori-line" id = "status-line"></div>
-					<div class = "hori-line-text" id = "status-line-text">半透明：受傷或受有損害<br>不透明：死亡</div>
-				</div>
-				<!-- <div class = "hori-line-block" id = "org-line-block">
-					<div class = "hori-line" id = "org-line"></div>
-					<div class = "hori-line-text" id = "org-line-text">主管機關</div>
-				</div> -->
-				<div class = "hori-line-block" id = "detail-line-block">
-					<div class = "hori-line" id = "detail-line"></div>
-					<div class = "hori-line-text" id = "detail-line-text">展開詳細說明</div>
-				</div>
-			</div>
-			<div class = "circle-icon"><img src="img/demo1.png"></div>
+			<div class = "contents">假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文</div>
+			
 		</div>
 		<hr>
 		<div id = "sort-btn-block">
@@ -126,16 +112,127 @@
 			<div class = "emphasize-text">中央機關國家賠償共<span class = "bigger-emphasize">389</span>件</div>
 			<div class = "emphasize-text">總金額<span class = "bigger-emphasize">6.79</span>億元</div>
 		</div>
+		
 		<div class = "main-chart"></div>
-		<div class = "highcharts-block" id = "all-event-chart"></div>
-		<div class = "highcharts-block" id = "all-money-chart"></div>
-		<div class = "highcharts-block" id = "all-event-statistic"></div>
-		<div class = "highcharts-block" id = "all-event-statistic-yr"></div>
+
+		<div class = "sec-container" id = "icons-container">
+			<div class = "icon-block">
+				<div>圖示說明</div>
+				<div class = "icon-image"><img src="img/demo.png"></div>
+				<div class = "icon-text-block">
+					<div class = "icon-text">賠款金額&nbsp;小&nbsp;</div>
+					<div class = "icon-text"><img id = "arrow-img" src="img/arrow.png"></div>
+					<div class = "icon-text" id = "icon-text-big">大</div>
+				</div>
+				<div class = "hori-line-block" id = "status-line-block">
+					<div class = "hori-line" id = "status-line"></div>
+					<div class = "hori-line-text" id = "status-line-text">半透明：受傷或受有損害<br>不透明：死亡</div>
+				</div>
+				<!-- <div class = "hori-line-block" id = "org-line-block">
+					<div class = "hori-line" id = "org-line"></div>
+					<div class = "hori-line-text" id = "org-line-text">主管機關</div>
+				</div> -->
+				<div class = "hori-line-block" id = "detail-line-block">
+					<div class = "hori-line" id = "detail-line"></div>
+					<div class = "hori-line-text" id = "detail-line-text">展開詳細說明</div>
+				</div>
+			</div>
+			<div class = "circle-icon"><img src="img/demo1.png"></div>
+		</div>
+
+		<div class = "main-chart-highcharts">
+			<div class = "highcharts-block" id = "all-event-chart"></div>
+			<div class = "main-highcharts-text-block">
+				<div class = "main-highcharts-title">小標</div>
+				<div class = "main-highcharts-text">
+					假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文
+				</div>
+			</div>
+		</div>
+		<div class = "main-chart-highcharts" id = "main-chart-highcharts-2">
+			<div class = "highcharts-block" id = "all-money-chart"></div>
+			<div class = "main-highcharts-text-block">
+				<div class = "main-highcharts-title">小標</div>
+				<div class = "main-highcharts-text">
+					假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文
+				</div>
+			</div>
+		</div>
+
+		<div class = "sec-container" id = "debate-cases">
+			<div class = "debate-block">
+				<div class = "debate-big-title">重大國賠事件簿</div>
+				<img class = "debate-img" src="img/test.jpg">
+				<div class = "debate-title">97.9 豐丘明隧道坍塌</div>
+				<div class = "debate-subtitle">
+					賠償時間：99.8、100.2<br>
+					賠償件數：8件<br>
+					賠償金額：5516萬元
+				</div>
+				<div class = "debate-content">
+					案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容
+				</div>
+			</div>
+			<div class = "debate-block">
+				<img class = "debate-img" src="img/test.jpg">
+				<div class = "debate-title">97.9 豐丘明隧道坍塌</div>
+				<div class = "debate-subtitle">
+					賠償時間：99.8、100.2<br>
+					賠償件數：8件<br>
+					賠償金額：5516萬元
+				</div>
+				<div class = "debate-content">
+					案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容
+				</div>
+			</div>
+			<div class = "debate-block">
+				<img class = "debate-img" src="img/test.jpg">
+				<div class = "debate-title">97.9 豐丘明隧道坍塌</div>
+				<div class = "debate-subtitle">
+					賠償時間：99.8、100.2<br>
+					賠償件數：8件<br>
+					賠償金額：5516萬元
+				</div>
+				<div class = "debate-content">
+					案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容
+				</div>
+			</div>
+			<div class = "debate-block">
+				<img class = "debate-img" src="img/test.jpg">
+				<div class = "debate-title">97.9 豐丘明隧道坍塌</div>
+				<div class = "debate-subtitle">
+					賠償時間：99.8、100.2<br>
+					賠償件數：8件<br>
+					賠償金額：5516萬元
+				</div>
+				<div class = "debate-content">
+					案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容
+				</div>
+			</div>
+			<div class = "debate-block">
+				<img class = "debate-img" src="img/test.jpg">
+				<div class = "debate-title">97.9 豐丘明隧道坍塌</div>
+				<div class = "debate-subtitle">
+					賠償時間：99.8、100.2<br>
+					賠償件數：8件<br>
+					賠償金額：5516萬元
+				</div>
+				<div class = "debate-content">
+					案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容案件內容
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class = "highcharts-block" id = "all-event-statistic"></div>
+		</div>
+		<div>
+			<div class = "highcharts-block" id = "all-event-statistic-yr"></div>
+		</div>
 		<div class = "editor-src">新媒體部/&nbsp;楊棋宇、蔡欣潔、蔡佩蓉&nbsp;&nbsp;&nbsp;製作<br>資料來源/&nbsp;</div>
 	</div>
 
 
-	<script type="text/javascript" src="js/compensate_index.js?v1"></script>
+	
 </body>
 </html>
 
