@@ -317,6 +317,8 @@ hr {
 .debate-big-title{
 	font-size: 30px;
 	font-weight: bold;
+	display: table;
+	margin: auto;
 }
 
 .debate-block{
