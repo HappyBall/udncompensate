@@ -36,11 +36,11 @@ var reason_class_count = 1;
 var all_org_event = [];
 var all_org_money = [];
 
-var rScale;
+/*var rScale;
 var rScale_linear;
 var rScale_logarithm;
 var all_rValue_list = [];
-var scale_now = 1;
+var scale_now = 1;*/
 
 //-----------------------------------------------------------------------------------------//
 for(var i = 0; i < org_list.length; i++)
@@ -335,13 +335,13 @@ $(document).ready(function(){
 					.range([5, 50])
 					.domain([minValue, maxValue]);
 
-		rScale_linear = d3.scale.linear()
+		/*rScale_linear = d3.scale.linear()
 					.range([5, 50])
 					.domain([minValue, maxValue]); 	
 
 		rScale_logarithm = d3.scale.log()
 					.range([5, 50])
-					.domain([minValue, maxValue]);		
+					.domain([minValue, maxValue]);*/		
 
 		var svg = d3.select(".main-chart").append("svg").attr({'class': 'main-svg', 'width': 1100, 'height': 1050})	;
 
@@ -417,7 +417,7 @@ $(document).ready(function(){
 				},
 
 				'r': function(d){
-					all_rValue_list[d['id']] = parseInt(d.money);
+					// all_rValue_list[d['id']] = parseInt(d.money);
 					return rScale(parseInt(d.money));
 				}
 			})
@@ -610,7 +610,7 @@ $(document).ready(function(){
 	$("#sort-by-money").click(function(){
 		if(sort_mode == 4){
 			$(".main-svg").attr("height", 1050);
-			$("text").fadeOut(1000);
+			$(".reason-text").fadeOut(1000);
 		}
 
 		$("#sort-by-" + sort_btn_list[sort_mode - 1]).css("border-bottom", "none");
@@ -631,7 +631,7 @@ $(document).ready(function(){
 	$("#sort-by-class").click(function(){
 		if(sort_mode == 4){
 			$(".main-svg").attr("height", 1050);
-			$("text").fadeOut(1000);
+			$(".reason-text").fadeOut(1000);
 		}
 
 		$("#sort-by-" + sort_btn_list[sort_mode - 1]).css("border-bottom", "none");
@@ -651,7 +651,7 @@ $(document).ready(function(){
 
 	$("#sort-by-reason").click(function(){
 		$(".main-svg").attr("height", 1650);
-		$("text").fadeIn(1000);
+		$(".reason-text").fadeIn(1000);
 
 		$("#sort-by-" + sort_btn_list[sort_mode - 1]).css("border-bottom", "none");
 
@@ -677,7 +677,7 @@ $(document).ready(function(){
 		}, 700);	    
 	});
 
-	$(".scale-btn").click(function(){
+	/*$(".scale-btn").click(function(){
 		var s = parseInt($(this).attr('id').split('-')[2]);
 		$('#scale-btn-' + scale_now).css("border-bottom", "none");
 		scale_now = s;
@@ -710,7 +710,7 @@ $(document).ready(function(){
 				});
 			}
 		}
-	});
+	});*/
 
 
 });
