@@ -101,8 +101,8 @@ hr {
 
 .icon-image{
 	display: table;
-	margin-left: 9%;
-	margin-top: 5%;
+	margin-left: 13%;
+	margin-top: 3%;
 }
 
 .icon-text{
@@ -116,6 +116,10 @@ hr {
 	margin-left: -1%;
 }
 
+#demo-img{
+	width: 200px;
+}
+
 #arrow-img{
 	width: 90%;
 }
@@ -126,8 +130,8 @@ hr {
 }
 
 #status-line-block{
-	top: 39%;
-	left: 41.5%;
+	top: 37%;
+	left: 37.5%;
 }
 
 #org-line-block{
@@ -137,7 +141,7 @@ hr {
 
 #detail-line-block{
 	top: 88%;
-	left: 45%;
+	left: 41%;
 }
 
 .hori-line{
@@ -291,7 +295,7 @@ hr {
 }
 
 .reason-text{
-	font-size: 40px;
+	font-size: 30px;
 	display: none;
 	font-family: 微軟正黑體;
 }

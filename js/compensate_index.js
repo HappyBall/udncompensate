@@ -1,21 +1,21 @@
 var data_money;
 var sort_mode = 1;
 
-var row_contain = 20;
+var row_contain = 25;
 
-var x_init = 50;
+var x_dis = 1000/row_contain;
+var y_dis = 60;
+var x_init = x_dis + 25;
 var y_init = 50;
-var x_dis = 50;
-var y_dis = 80;
 var x = x_init;
 var y = y_init;
 var y_count = 0;
 
 var org_list = ['交通部', '國防部', '財政部', '經濟部', '法務部', '教育部', '內政部', '行政院海巡署', '司法院', '行政院農委會', '外交部', '銓敘部', '考選部', '科技部', '衛生福利部', '國軍退除役官兵輔導委員會', '原住民族委員會'];
-var reason_list = ['交通意外', '天災', '軍訓事故', '行政疏失', '校園管教不當', '工程意外'];
+var reason_list = ['道路意外', '天災', '軍訓事故', '行政疏失', '校園管教不當', '工程意外'];
 var sort_btn_list = ['date', 'money', 'class', 'reason'];
-var reson_littletext_event = ['187', '38', '55', '78', '7', '5'];
-var reson_littletext_money = ['2.23億', '2.21億', '1.5億', '6338萬', '1471萬', '998萬'];
+var reson_littletext_event = ['191', '51', '53', '82', '7', '5'];
+var reson_littletext_money = ['2.24億', '2.24億', '1.45億', '6687萬', '1470萬', '998萬'];
 var color_list = ['#276fff','#a8ff00','#1FA05F','#5CE0FF','#EB75FF','#ED8700','#6EFFD1','#31A7FF','#FF709B','#AF3E81','#FCBD3F','#BFFF75','#6AA024','#8159C1','#EF5233','#931A11','#1873AA'];
 var scroll_ID_list = ['sort-btn-block', 'debate-cases', 'last-highcharts-container'];
 
@@ -399,7 +399,7 @@ $(document).ready(function(){
 				'cx': function(d){
 					var now_x = x;
 					x = x + x_dis;
-					if(x > 1000){
+					if(x > 1050){
 						x = x_init;
 					}
 					date_x_list[d['id']] = now_x;
@@ -470,9 +470,20 @@ $(document).ready(function(){
 				money_y_list[data_money[i-1]['id']] = money_y;
 
 				class_list[data[i - 1]['org']].push(data[i - 1]);
+				// console.log(data[i - 1]['event_class']);
 				reason_class_list[data[i - 1]['event_class']].push(data[i - 1]);
+
 			}
 
+			/*for(var i = 0; i < Object.keys(reason_class_list).length; i++){
+				var mm = 0;
+				for(var j = 0; j < reason_class_list[reason_list[i]].length; j++){
+					mm += parseInt(reason_class_list[reason_list[i]][j]['money']);
+				}
+
+				console.log(mm);
+			}*/
+				
 			// console.log(money_x_list);
 			// console.log(money_y_list);
 			// console.log(class_list);
@@ -549,29 +560,29 @@ $(document).ready(function(){
 				svg.append("text").text(reason_list[i])
 				.attr({
 					'class': "reason-text",
-					'x': 30,
-					'y': reason_text_y_list[i],
+					'x': 45,
+					'y': reason_text_y_list[i] - 15,
 					'fill': "#ededed"
 				});
 
 				svg.append("text").text(reson_littletext_event[i] + '件')
 				.attr({
 					'class': "reason-text",
-					'x': 30 + reason_list[i].length*40 + 30,
-					'y': reason_text_y_list[i],
+					'x': 45 + reason_list[i].length*40 + 30,
+					'y': reason_text_y_list[i] - 15,
 					'fill': "#ededed"
 				});
 
 				svg.append("text").text('賠償金額' + reson_littletext_money[i] + '元')
 				.attr({
 					'class': "reason-text",
-					'x': 30 + reason_list[i].length*40 + 30 + reson_littletext_event[i].length*25 + 70,
-					'y': reason_text_y_list[i],
+					'x': 45 + reason_list[i].length*40 + 30 + reson_littletext_event[i].length*25 + 70,
+					'y': reason_text_y_list[i] - 15,
 					'fill': "#ededed"
 				});
 			}
 
-			console.log(all_rValue_list);
+			// console.log(all_rValue_list);
 	});
 
 	$("#sort-by-date").click(function(){
