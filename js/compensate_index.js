@@ -59,13 +59,13 @@ $(document).ready(function(){
 			temp_event['name'] = data_event_money[i]['org'];
 			temp_event['data'] = [];
 			temp_event['data'].push(parseInt(data_event_money[i]['events']));
-			temp_event['color'] = color_list[i];
+			temp_event['color'] = color_list[org2Num(data_event_money[i]['org'])];
 			all_org_event.push(temp_event);
 
 			temp_money['name'] = data_event_money[i]['org'];
 			temp_money['data'] = [];
 			temp_money['data'].push(parseInt(data_event_money[i]['money']));
-			temp_money['color'] = color_list[i];
+			temp_money['color'] = color_list[org2Num(data_event_money[i]['org'])];
 
 			all_org_money.push(temp_money);
 			
@@ -343,7 +343,7 @@ $(document).ready(function(){
 					.range([5, 50])
 					.domain([minValue, maxValue]);		
 
-		var svg = d3.select(".main-chart").append("svg").attr({'class': 'main-svg', 'width': 1100, 'height': 1600})	;
+		var svg = d3.select(".main-chart").append("svg").attr({'class': 'main-svg', 'width': 1100, 'height': 1050})	;
 
 		tip = d3.tip().attr('class', 'd3-tip')
 				.offset(function(d){
@@ -587,7 +587,7 @@ $(document).ready(function(){
 
 	$("#sort-by-date").click(function(){
 		if(sort_mode == 4){
-			$(".main-svg").attr("height", 1600);
+			$(".main-svg").attr("height", 1050);
 			$("text").fadeOut(1000);
 		}
 
@@ -609,7 +609,7 @@ $(document).ready(function(){
 
 	$("#sort-by-money").click(function(){
 		if(sort_mode == 4){
-			$(".main-svg").attr("height", 1600);
+			$(".main-svg").attr("height", 1050);
 			$("text").fadeOut(1000);
 		}
 
@@ -630,7 +630,7 @@ $(document).ready(function(){
 
 	$("#sort-by-class").click(function(){
 		if(sort_mode == 4){
-			$(".main-svg").attr("height", 1600);
+			$(".main-svg").attr("height", 1050);
 			$("text").fadeOut(1000);
 		}
 
@@ -650,7 +650,7 @@ $(document).ready(function(){
 	});
 
 	$("#sort-by-reason").click(function(){
-		$(".main-svg").attr("height", 2250);
+		$(".main-svg").attr("height", 1650);
 		$("text").fadeIn(1000);
 
 		$("#sort-by-" + sort_btn_list[sort_mode - 1]).css("border-bottom", "none");
