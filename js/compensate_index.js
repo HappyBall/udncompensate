@@ -111,7 +111,8 @@ $(document).ready(function(){
 		                },
 		                rotation: 0
 		            },
-		            type: 'linear'
+		            type: 'linear',
+		            max: 200
 		        },
 		        series: all_org_event,
 		        legend:{
