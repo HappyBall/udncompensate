@@ -205,7 +205,8 @@ $(document).ready(function(){
 		                style:{
 		                	'color': "#ededed"
 		                }
-		            }
+		            },
+		            gridLineWidth: 0
 		        },
 		        legend: {
 		            reversed: true,
@@ -285,7 +286,8 @@ $(document).ready(function(){
 		                value: 0,
 		                width: 1,
 		                color: '#808080'
-		            }]
+		            }],
+		            gridLineWidth: 0
 		        },
 		        tooltip: {
 		            valueSuffix: '件'
