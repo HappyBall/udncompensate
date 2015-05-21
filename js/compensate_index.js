@@ -11,13 +11,18 @@ var x = x_init;
 var y = y_init;
 var y_count = 0;
 
+var svg_height = 750;
+var svg_height_reason = 1350;
+
+var debate_img_focused = 1;
+
 var org_list = ['交通部', '國防部', '財政部', '經濟部', '法務部', '教育部', '內政部', '行政院海巡署', '司法院', '行政院農委會', '外交部', '銓敘部', '考選部', '科技部', '衛生福利部', '國軍退除役官兵輔導委員會', '原住民族委員會'];
 var reason_list = ['道路意外', '天災', '軍訓事故', '行政疏失', '校園管教不當', '工程意外'];
 var sort_btn_list = ['date', 'money', 'class', 'reason'];
 var reson_littletext_event = ['191', '51', '53', '82', '7', '5'];
 var reson_littletext_money = ['2.24億', '2.24億', '1.45億', '6687萬', '1470萬', '998萬'];
 var color_list = ['#276fff','#a8ff00','#1FA05F','#5CE0FF','#EB75FF','#ED8700','#6EFFD1','#31A7FF','#FF709B','#AF3E81','#FCBD3F','#BFFF75','#6AA024','#8159C1','#EF5233','#931A11','#1873AA'];
-var scroll_ID_list = ['sort-btn-block', 'debate-cases', 'last-highcharts-container'];
+var scroll_ID_list = ['sort-btn-block', 'debate-cases', 'last-highcharts'];
 
 var date_x_list = [];
 var date_y_list = [];
@@ -180,7 +185,53 @@ $(document).ready(function(){
 		    });
 		});
 
-		$(function () {
+		$('#all-event-statistic').highcharts({
+            chart: {
+                backgroundColor: '#111111',
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            credits:{
+		       	enabled: false
+		    },
+            title: {
+                text: '中央機關歷年國賠情形',
+		        style:{
+		        	color: '#ededed'
+		        }
+            },
+            tooltip: {
+                pointFormat: '{point.y}件<br>{point.percentage:.1f}%</br>'
+            },
+            plotOptions: {
+                pie: {
+                    // allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                // name: '',
+                data: [
+                    ['賠償件數',  721],
+                    ['未賠償件數', 10926]
+                ]
+            }],
+            legend:{
+            	itemStyle:{
+		           	'color':'#ededed'
+		        },
+		        itemHoverStyle: {
+		            color: '#ededed'
+		        }
+            }
+        });
+
+		/*$(function () {
 		    $('#all-event-statistic').highcharts({
 		        chart: {
 		            type: 'bar',
@@ -252,9 +303,9 @@ $(document).ready(function(){
 		        		'font-size': '25px'
 		        	}
 		        }
-		    });
+		    });*/
 
-		    $('#all-event-statistic-yr').highcharts({
+		    /*$('#all-event-statistic-yr').highcharts({
 		    	chart: {
 		    		backgroundColor: '#111111'
 		    	},
@@ -266,12 +317,12 @@ $(document).ready(function(){
 		            style:{
 		            	color: '#ededed'
 		            }
-		        },
+		        },*/
 		       /* subtitle: {
 		            text: 'Source: WorldClimate.com',
 		            x: -20
 		        },*/
-		        xAxis: {
+		        /*xAxis: {
 		            categories: ['71', '72', '73', '74', '75', '76','77', '78', '79', '80', '81', '82','83', '84', '85', '86', '87', '88', '89', '90','91', '92', '93','94', '95', '96','97', '98', '99','100', '101', '102','103']
 		        },
 		        yAxis: {
@@ -318,9 +369,9 @@ $(document).ready(function(){
 		             color:'#66CFDD',
 		            data: [0,2,1,1,3,0,5,12,4,13,9,11,5,6,12,4,9,5,56,69,48,31,26,51,15,36,37,43,48,77,32,23,27]
 		        }]
-		    });
+		    });*/
 
-		});
+		// });
 
 	});
 
@@ -346,7 +397,7 @@ $(document).ready(function(){
 					.range([5, 50])
 					.domain([minValue, maxValue]);*/		
 
-		var svg = d3.select(".main-chart").append("svg").attr({'class': 'main-svg', 'width': 1100, 'height': 1050})	;
+		var svg = d3.select(".main-chart").append("svg").attr({'class': 'main-svg', 'width': 1100, 'height': svg_height})	;
 
 		tip = d3.tip().attr('class', 'd3-tip')
 				.offset(function(d){
@@ -385,7 +436,7 @@ $(document).ready(function(){
 						return 'e'; 
 				})
 				.html(function(d) { 
-					var tip_html = "<div class = 'tip-little-title'>主管機關</div><div class = 'tip-text'><span class = 'tip-org-" + org2Num(d.org) + "'>●</span>" + d.detail_org + "</div><div class = 'tip-little-title'>事件原因</div><div class = 'tip-text'>" + d.event_class + "</div><div class = 'tip-little-title'>死傷狀況</div><div class = 'tip-text'>"+ d['status'] +"</div><div class = 'tip-little-title'>撥款日期</div><div class = 'tip-text'>" + d.date + "</div><div class = 'tip-little-title'>賠償金額</div><div class = 'tip-text' id = 'tip-text-money'>" + modNum(d.money) + "</div><br><div class = 'tip-little-title'>案情摘要</div><div class = 'tip-text' id = 'tip-text-detail'>" + d.event_detail + "</div>";
+					var tip_html = "<div class = 'tip-little-title'>主管機關</div><div class = 'tip-text'><span class = 'tip-org-" + org2Num(d.org) + "'>●</span>" + d.org + "</div><div class = 'tip-little-title'>賠償機關</div><div class = 'tip-text'>"+ d.detail_org + "</div><div class = 'tip-little-title'>事件原因</div><div class = 'tip-text'>" + d.event_class + "</div><div class = 'tip-little-title'>死傷狀況</div><div class = 'tip-text'>"+ d['status'] +"</div><div class = 'tip-little-title'>撥款日期</div><div class = 'tip-text'>" + d.date + "</div><div class = 'tip-little-title'>賠償金額</div><div class = 'tip-text' id = 'tip-text-money'>" + modNum(d.money) + "</div><br><div class = 'tip-little-title'>案情摘要</div><div class = 'tip-text' id = 'tip-text-detail'>" + d.event_detail + "</div>";
 					return tip_html;
 				});
 		
@@ -590,7 +641,7 @@ $(document).ready(function(){
 
 	$("#sort-by-date").click(function(){
 		if(sort_mode == 4){
-			$(".main-svg").attr("height", 1050);
+			$(".main-svg").attr("height", svg_height);
 			$("text").fadeOut(1000);
 		}
 
@@ -612,7 +663,7 @@ $(document).ready(function(){
 
 	$("#sort-by-money").click(function(){
 		if(sort_mode == 4){
-			$(".main-svg").attr("height", 1050);
+			$(".main-svg").attr("height", svg_height);
 			$(".reason-text").fadeOut(1000);
 		}
 
@@ -633,7 +684,7 @@ $(document).ready(function(){
 
 	$("#sort-by-class").click(function(){
 		if(sort_mode == 4){
-			$(".main-svg").attr("height", 1050);
+			$(".main-svg").attr("height", svg_height);
 			$(".reason-text").fadeOut(1000);
 		}
 
@@ -653,7 +704,7 @@ $(document).ready(function(){
 	});
 
 	$("#sort-by-reason").click(function(){
-		$(".main-svg").attr("height", 1800);
+		$(".main-svg").attr("height", svg_height_reason);
 		$(".reason-text").fadeIn(1000);
 
 		$("#sort-by-" + sort_btn_list[sort_mode - 1]).css("border-bottom", "none");
@@ -679,6 +730,22 @@ $(document).ready(function(){
 			scrollTop: ($("#" + scroll_ID_list[s - 1]).offset().top-90)
 		}, 700);	    
 	});
+
+	window.onscroll = function(e){
+		console.log(window.scrollY + 320);
+		console.log(pic_focus(window.scrollY+320));
+		console.log(debate_img_focused);
+		console.log($("#debate-img-2").offset().top);
+		if(pic_focus(window.scrollY+320) == debate_img_focused)
+			;
+		else{
+			$("#debate-img-" + debate_img_focused).css("opacity", 0.3);
+			debate_img_focused = pic_focus(window.scrollY+320);
+			$("#debate-img-" + debate_img_focused).css("opacity", 1);
+		}
+		// console.log(window.scrollY+320);
+		// console.log($("#debate-img-1").offset().top)
+	}
 
 	/*$(".scale-btn").click(function(){
 		var s = parseInt($(this).attr('id').split('-')[2]);
@@ -718,7 +785,20 @@ $(document).ready(function(){
 
 });
 
-
+function pic_focus(yy){
+	
+	if (yy < $("#debate-img-2").offset().top)
+		return 1;
+	else if (yy >= $("#debate-img-2").offset().top && yy < $("#debate-img-3").offset().top)
+		return 2;
+	else if (yy >= $("#debate-img-3").offset().top && yy < $("#debate-img-4").offset().top)
+		return 3;
+	else if (yy >= $("#debate-img-4").offset().top && yy < $("#debate-img-5").offset().top)
+		return 4;
+	else if (yy >= $("#debate-img-5").offset().top)
+		return 5;
+	
+}
 
 function org2Num(str){
 	switch(str){

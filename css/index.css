@@ -335,25 +335,55 @@ hr {
 	margin-top: 60px;
 }
 
+.debate-outer{
+	display: table;
+	color: #ededed;
+	font-family: 微軟正黑體;
+}
+
+.debate-outer-first{
+	display: table;
+	color: #ededed;
+	font-family: 微軟正黑體;
+	margin-top: 50px;
+}
+
 #debate-cases{
-	margin-top: 40px;
+	/*margin-top: 40px;*/
 }
 
 .debate-big-title{
 	font-size: 30px;
 	font-weight: bold;
 	display: table;
-	margin: auto;
+	margin-top: 100px;
+	color: #ededed;
+	font-family: 微軟正黑體;
+	/*margin: auto;*/
 }
 
 .debate-block{
-	color: #ededed;
-	font-family: 微軟正黑體;
-	margin-top: 60px;
+	/*color: #ededed;*/
+	/*font-family: 微軟正黑體;*/
+	margin-top: 0px;
+	width: 60%;
+	float: left;
+}
+
+.debate-img-div{
+	float: left;
+	width: 30%;
+	margin-left: 10%;
+	opacity: 0.3;
+}
+
+#debate-img-1{
+	opacity: 1;
 }
 
 .debate-img{
 	margin-top: 30px;
+	width: 100%;
 }
 
 .debate-title{
@@ -363,15 +393,22 @@ hr {
 }
 
 .debate-subtitle{
-	font-size: 17px;
-	line-height: 26px;
+	font-size: 20px;
+	line-height: 30px;
 	margin-top: 20px;
+	width: 60%;
+	color: #ededed;
+	font-family: 微軟正黑體;
 }
 
 .debate-content{
 	font-size: 20px;
 	line-height: 30px;
 	margin-top: 20px;
+}
+
+#debate-bomb{
+	margin-top: 70px;
 }
 
 #last-highcharts-container{
@@ -384,25 +421,26 @@ hr {
 	font-family: 微軟正黑體;
 	color: #ededed;
 	display: table;
-	margin: auto;
+	margin-top: 100px;
+	/*margin: auto;*/
 }
 
 .last-highcharts-block{
 	display: table;
-	margin-top: 50px;
+	margin-top: 20px;
 	width: 100%;
 
 }
 
 .highcharts-block-last{
-	width: 49%;
+	width: 40%;
 	display: table;
 	float: left;
 }
 
 .last-highcharts-text{
-	width: 100%;
-	/*float: left;*/
+	width: 60%;
+	float: left;
 	font-size: 20px;
 	font-family: 微軟正黑體;
 	line-height: 30px;
