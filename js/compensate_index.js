@@ -732,10 +732,7 @@ $(document).ready(function(){
 	});
 
 	window.onscroll = function(e){
-		console.log(window.scrollY + 320);
-		console.log(pic_focus(window.scrollY+320));
-		console.log(debate_img_focused);
-		console.log($("#debate-img-2").offset().top);
+		
 		if(pic_focus(window.scrollY+320) == debate_img_focused)
 			;
 		else{
