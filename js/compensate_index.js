@@ -1,10 +1,10 @@
 var data_money;
 var sort_mode = 1;
 
-var row_contain = 25;
+var row_contain = 30;
 
 var x_dis = 1000/row_contain;
-var y_dis = 60;
+var y_dis = 50;
 var x_init = x_dis + 25;
 var y_init = 50;
 var x = x_init;
@@ -333,7 +333,7 @@ $(document).ready(function(){
 		var minValue = d3.min(data, function(d){return parseInt(d.money)});
 
 		rScale = d3.scale.sqrt()
-					.range([5, 50])
+					.range([5, 40])
 					.domain([minValue, maxValue]);
 
 		/*rScale_linear = d3.scale.linear()
