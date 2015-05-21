@@ -548,8 +548,8 @@ $(document).ready(function(){
 
 					if(j == reason_class_list[reason_list[i]].length - 1){
 						if(i < Object.keys(reason_class_list).length - 1)
-							reason_text_y_list[i + 1] = reason_class_y + y_dis + 30;
-						y_now = reason_class_y + y_dis*2;
+							reason_text_y_list[i + 1] = reason_class_y + y_dis + 50;
+						y_now = reason_class_y + y_dis*2.5;
 					}
 				}
 
@@ -651,7 +651,7 @@ $(document).ready(function(){
 	});
 
 	$("#sort-by-reason").click(function(){
-		$(".main-svg").attr("height", 1650);
+		$(".main-svg").attr("height", 1800);
 		$(".reason-text").fadeIn(1000);
 
 		$("#sort-by-" + sort_btn_list[sort_mode - 1]).css("border-bottom", "none");
