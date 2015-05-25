@@ -69,6 +69,7 @@
   	<script type="text/javascript" src="js/highcharts.js"></script>
   	<script type="text/javascript" src="js/d3tip.js"></script>
   	<script type="text/javascript" src="js/compensate_index.js"></script>
+  	<script type="text/javascript" src="js/jquery.appear.js"></script>
   	<link rel="stylesheet" type="text/css" href="css/index.css">
 
 </head>
@@ -78,14 +79,15 @@
 		<header>
 			<div class = "header-container">
 				<div class = "header-logo"><img id = "header-newmedia-logo" src="img/logo.png"></div>
+				<div class = "header-nav" id = "header-nav-4">公務員賠償</div>
 				<div class = "header-nav" id = "header-nav-3">國賠成功率</div>
 				<div class = "header-nav" id = "header-nav-2">重大國賠案</div>
 				<div class = "header-nav" id = "header-nav-1">總覽</div>
 			</div>
 		</header>
 		<div class = "sec-container">
-			<div class = "title">台灣國賠實錄<br>國防部10年花1.89億</div>
-			<div class = "contents">長久以來，台灣國家賠償案件紀錄是一份不透明、公開的資料，外界難以得知人民權利遭國家侵害的情況，本報取得法務部民國94~103年中央機關國賠資料，10年共389件、賠償金額6.86億，其中國防部國賠紀錄更是首次完整揭露。透過視覺化呈現，帶你探索數據背後的故事。</div>
+			<div class = "title">台灣國賠實錄<br>交通、國防部占8成</div>
+			<div class = "contents">長久以來，台灣國家賠償案件紀錄是一份不透明、公開的資料，一般人難以得知國家侵害人民權益的情況，本報調查民國94到103年中央機關國賠資料，10年共389件、賠償金額6.86億元，其中交通部和國防部占所有國賠金額的8成以上。透過視覺化呈現這份紀錄，帶你探索數據背後的故事。</div>
 			
 		</div>
 		<hr>
@@ -121,7 +123,8 @@
 		<div class = "main-chart"></div>
 
 		<div class = "sec-container" id = "icons-container">
-			<div class = "icon-block">
+			<div><img src="img/demo3.png"></div>
+			<!-- <div class = "icon-block">
 				<div>圖示說明</div>
 				<div class = "icon-image"><img id = "demo-img" src="img/demo.png"></div>
 				<div class = "icon-text-block">
@@ -133,38 +136,36 @@
 					<div class = "hori-line" id = "status-line"></div>
 					<div class = "hori-line-text" id = "status-line-text">半透明：受傷或受有損害<br>不透明：死亡</div>
 				</div>
-				<!-- <div class = "hori-line-block" id = "org-line-block">
-					<div class = "hori-line" id = "org-line"></div>
-					<div class = "hori-line-text" id = "org-line-text">主管機關</div>
-				</div> -->
+				
 				<div class = "hori-line-block" id = "detail-line-block">
 					<div class = "hori-line" id = "detail-line"></div>
 					<div class = "hori-line-text" id = "detail-line-text">展開詳細說明</div>
 				</div>
 			</div>
-			<div class = "circle-icon"><img src="img/demo1.png"></div>
+			<div class = "circle-icon"><img src="img/demo1.png"></div> -->
 		</div>
 
 		<div class = "main-chart-highcharts">
 			<div class = "main-highcharts-text-block">
-				<div class = "main-highcharts-title">小標</div>
+				<div class = "main-highcharts-title">交通部3.89億居冠，天災、路不平傷人</div>
 				<div class = "main-highcharts-text">
-					假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文
+					從近10年國家賠償的機關排名分析，交通部賠償193件、金額3.89億元居首，賠償原因主要是天災和道路意外，天災包括因颱風造成的土石流、斷橋，例如豐丘明隧道坍塌、后豐大橋遭洪水沖斷、國道3號走山等，都是近年的重大國賠案例。道路意外則多因交通設施不良，如道路坑洞、標誌不清、人孔蓋缺損害民眾摔車。
+				</div>
+				<div class = "main-highcharts-title">國防部1.89億第二，軍訓事故賠最多</div>
+				<div class = "main-highcharts-text">
+					國防部以10年賠償80件、金額1.89億元位居第二，軍訓事故就賠1.45億元最多，顯示軍事訓練是一個高風險、高出事率的行為，且大多肇因於人為疏失。例如打靶時指揮官沒有發耳罩就令士兵舉靶，致子彈擦頭而過時震破耳膜；坦克、軍車移防時指揮不當壓死人等。
+				</div>
+				<div class = "main-highcharts-title">校園性侵案，占教育部賠償金額過半</div>
+				<div class = "main-highcharts-text">
+					教育部以10年賠償2153萬元列國賠金額第三名，最大原因是連爆多件校園性侵案，曾文農工5名學生遭老師性侵國賠703萬元，台南啟聰學校164件性侵、性騷擾案國賠5名受害人675萬元，這兩案相加1378萬元，占了教育部國賠金額的一半以上。顯示教職員維護校園安全的努力仍有待加強。
 				</div>
 			</div>
-			<div class = "highcharts-block" id = "all-event-chart"></div>
-			
-		</div>
-		<div class = "main-chart-highcharts" id = "main-chart-highcharts-2">
-			<div class = "main-highcharts-text-block">
-				<div class = "main-highcharts-title">小標</div>
-				<div class = "main-highcharts-text">
-					假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文假文
-				</div>
+			<div class = "main-highcharts-chart-block">
+				<div class = "highcharts-block" id = "all-event-chart"></div>
+				<div class = "highcharts-block" id = "all-money-chart"></div>
 			</div>
-			<div class = "highcharts-block" id = "all-money-chart"></div>
-			
 		</div>
+		
 
 		<!-- <div class = "sec-container" id = "debate-cases"> -->
 
@@ -255,7 +256,27 @@
 
 			<!-- <div class = "highcharts-block-last" id = "all-event-statistic-yr"></div>			 -->
 		</div>
-		<div class = "editor-src">新媒體部/&nbsp;楊棋宇、蔡欣潔、蔡佩蓉&nbsp;&nbsp;&nbsp;製作<br>資料來源/&nbsp;</div>
+
+		<div class = "last-highcharts-title" id = "government-people">向公務員求償比率低</div>
+		<div class = "last-highcharts-block">
+			
+				<div class = "last-highcharts-text">
+					國家賠償法有先賠受害國民後，再向過失公務員求償規定，但要件是「公務員有故意或重大過失」，要抓到公務員故意整民眾的證據不容易，且要不要向公務員求償是由賠償的機關決定，被立委和學者抨擊這是「球員兼裁判」，向公務員求償的比率極低。<p>立法院曾統計中央機關辦理國家賠償後向公務員求償的比率，民國97年是7.19%、98年是1.65%、99年是0.83%。<p>
+					<div id = "govern-peo">土地登錄錯誤 公僕判賠500萬</div>
+					向公務員求償案例雖少，但仍有公務員因重大過失被求償。民國91年，豐原地政事務所誤將山區保育農用地登錄為建築用地，致後來建商蓋好房屋後被撤銷使用執照不能賣屋，獲國賠1億7千萬元。當時的台中縣政府轉向負責土地登錄的林姓和校對的廖姓女職員求償國賠金額的十分之一，1700萬元。<p>法院判林女和廖女各賠一半865萬元，林女未上訴確定，廖女上訴，台中高分院以3年前台中市政府制定國賠求償基準，訂定公務員最高賠償上限為500萬元，今年3月改判廖女賠償500萬。廖女再上訴最高法院，目前仍在審理中。
+
+				</div>
+			
+			<div class = "highcharts-block-last" id = "government-people-compensate"></div>
+
+			<!-- <div class = "highcharts-block-last" id = "all-event-statistic-yr"></div>			 -->
+		</div>
+		<div class = "editor-src">
+			新媒體部/&nbsp;楊棋宇、蔡欣潔、蔡佩蓉&nbsp;&nbsp;&nbsp;製作<br>
+			聯合報／&nbsp;記者劉峻谷&nbsp;&nbsp;&nbsp;採訪報導<br>
+			圖／&nbsp;本報資料照片<br>
+			資料來源／&nbsp;法務部
+		</div>
 	</div>
 
 

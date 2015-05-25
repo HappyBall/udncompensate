@@ -22,7 +22,7 @@ var sort_btn_list = ['date', 'money', 'class', 'reason'];
 var reson_littletext_event = ['191', '51', '53', '82', '7', '5'];
 var reson_littletext_money = ['2.24億', '2.24億', '1.45億', '6687萬', '1470萬', '998萬'];
 var color_list = ['#276fff','#a8ff00','#1FA05F','#5CE0FF','#EB75FF','#ED8700','#6EFFD1','#31A7FF','#FF709B','#AF3E81','#FCBD3F','#BFFF75','#6AA024','#8159C1','#EF5233','#931A11','#1873AA'];
-var scroll_ID_list = ['sort-btn-block', 'debate-cases', 'last-highcharts'];
+var scroll_ID_list = ['sort-btn-block', 'debate-cases', 'last-highcharts', 'government-people'];
 
 var date_x_list = [];
 var date_y_list = [];
@@ -53,6 +53,28 @@ for(var i = 0; i < org_list.length; i++)
 
 for(var i = 0; i < reason_list.length; i++)
 	reason_class_list[reason_list[i]] = [];
+
+(function (H) {
+    function deferRender (proceed) {
+        var series = this, 
+            $renderTo = $(this.chart.container.parentNode);
+     
+        // It is appeared, render it
+        if ($renderTo.is(':appeared')) {
+            proceed.call(series);
+            
+        // It is not appeared, halt renering until appear
+        } else  {
+            $renderTo.appear(); // Initialize appear plugin
+            $renderTo.on('appear', function () {
+                proceed.call(series);
+            });
+        }
+    };
+    
+    H.wrap(H.Series.prototype, 'render', deferRender);
+    
+}(Highcharts));
 
 $(document).ready(function(){
 
@@ -91,7 +113,170 @@ $(document).ready(function(){
 		        // colors: []
 		    });
 
-		    $('#all-event-chart').highcharts({
+		     $('#all-event-chart').highcharts({
+		        chart: {
+		            type: 'bar',
+		            backgroundColor: '#111111'
+		        },
+		        title: {
+		            text: '各中央機關10年國賠件數',
+		            style:{
+		            	color: '#ededed'
+		            }
+		        },
+		        credits:{
+		        	enabled: false
+		        },
+		       
+		        xAxis: {
+		            type: 'category',
+		            labels: {
+		                rotation: 0,
+		                style: {
+		                    fontSize: '10px',
+		                    fontFamily: '微軟正黑體',
+		                    color:'#ededed'
+		                }
+		            }
+		        },
+		        yAxis: {
+		            min: 0,
+		            title: {
+		                text: '件',
+		                style: {
+		                	color: '#ededed'
+		                }
+		            }
+		        },
+		        legend: {
+		            enabled: false
+		        },
+		        tooltip: {
+		            pointFormat: ' <b>{point.y:.0f} </b>件'
+		        },
+		        series: [{
+		            color:'#CC9900',          
+		            
+		           /* name: 'Population',*/
+		            data: [
+		                ['交通部', 193],
+		                ['國防部', 80],
+		                ['財政部', 19],
+		                ['法務部', 18],
+		                ['教育部', 18],
+		                ['經濟部', 17],
+		                ['內政部', 13],
+		                ['行政院海巡署', 11],
+		                ['司法院', 9],
+		                ['行政院農委會', 4],
+		                ['科技部', 1],
+		                ['原住民委員會', 1],
+		                ['衛生福利部', 1],
+		                ['外交部', 1],
+		                ['考選部', 1],
+		                ['銓敘部', 1],
+		                ['國軍退除役官兵輔導委員會', 1]
+		             
+		            ],
+		            dataLabels: {
+		                enabled: true,
+		                rotation: 0,
+		                color: '#FFFFFF',
+		                align: 'right',
+		                format: '{point.y:.0f}', // one decimal
+		                y: 0, // 10 pixels down from the top
+		                style: {
+		                    fontSize: '10px',
+		                    fontFamily: '微軟正黑體'
+		                }
+		            }
+		        }]
+		    });
+
+			$('#all-money-chart').highcharts({
+		        chart: {
+		            type: 'bar',
+		            backgroundColor: '#111111'
+		        },
+		        title: {
+		            text: '各中央機關10年國賠金額',
+		            style:{
+		            	color: '#ededed'
+		            }
+		        },
+		        credits:{
+		        	enabled: false
+		        },
+		        xAxis: {
+		            type: 'category',
+		            labels: {
+		                rotation: 0,
+		                style: {
+		                    fontSize: '10px',
+		                    fontFamily: '微軟正黑體',
+		                    color:'#ededed'
+		                }
+		            }
+		        },
+		        yAxis: {
+		            // min: 0,
+		            title: {
+		                text: '元',
+		                style: {
+		                	color: '#ededed'
+		                },
+		            },
+		            type: 'logarithmic',
+		            tickInterval: 1
+		        },
+		        legend: {
+		            enabled: false
+		        },
+		        tooltip: {
+		            pointFormat: ' <b>{point.y:.0f} </b>件'
+		        },
+		        series: [{
+		            color:'#CC9900',          
+		            
+		           /* name: 'Population',*/
+		            data: [
+		                ['交通部', 389053740],
+		                ['國防部', 189735448],
+		                ['教育部', 21533721],
+		                ['法務部', 19751182],
+		                ['經濟部', 18351640],
+		                ['行政院海巡署', 13956241],
+		                ['財政部', 12971767],
+		                ['內政部', 10158334],
+		                ['司法院',4161554],
+		                ['行政院農委會',2252801],
+		                ['國軍退除役官兵輔導委員會', 1269934],
+		                ['科技部', 1184266],
+		                ['衛生福利部', 1167835],
+		                ['原住民委員會', 424598],
+		                ['銓敘部', 120000],
+		                ['外交部', 20000],
+		                ['考選部', 9000]
+		               
+		                
+		             
+		            ],
+		            dataLabels: {
+		                enabled: true,
+		                rotation: 0,
+		                color: '#FFFFFF',
+		                align: 'right',
+		                format: '{point.y:.0f}', // one decimal
+		                y: 0, // 10 pixels down from the top
+		                style: {
+		                    fontSize: '10px',
+		                    fontFamily: '微軟正黑體'
+		                }
+		            }
+		        }]
+		    });
+
+		    /*$('#all-event-chart').highcharts({
 		        chart: {
 		        	backgroundColor: '#111111',
 		            type: 'column'
@@ -182,7 +367,7 @@ $(document).ready(function(){
 		                borderWidth: 0
 		            }
 		        }
-		    });
+		    });*/
 		});
 
 		$('#all-event-statistic').highcharts({
@@ -195,7 +380,7 @@ $(document).ready(function(){
 		       	enabled: false
 		    },
             title: {
-                text: '中央機關歷年國賠情形',
+                text: '',
 		        style:{
 		        	color: '#ededed'
 		        }
@@ -208,7 +393,12 @@ $(document).ready(function(){
                     // allowPointSelect: true,
                     cursor: 'pointer',
                     dataLabels: {
-                        enabled: false
+                        enabled: true,
+	                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+	                    style: {
+	                        color: '#ededed',
+	                        fontSize: '17px'
+	                    }
                     },
                     showInLegend: true
                 }
@@ -218,7 +408,7 @@ $(document).ready(function(){
                 // name: '',
                 data: [
                     ['賠償件數',  721],
-                    ['未賠償件數', 10926]
+                    ['未賠償件數', 10205]
                 ]
             }],
             legend:{
@@ -230,6 +420,67 @@ $(document).ready(function(){
 		        }
             }
         });
+
+		$('#government-people-compensate').highcharts({
+	        chart: {
+	            type: 'column',
+	            backgroundColor: '#111111',
+	        },
+	        credits:{
+		       	enabled: false
+		    },
+	        title: {
+	            text: '向公務員求償比率',
+	            style:{
+		        	color: '#ededed'
+		        }
+	        },
+	       
+	        xAxis: {
+	            type: 'category',
+	            labels: {
+	                rotation: 0,
+	                style: {
+	                    fontSize: '10px',
+	                    fontFamily: '微軟正黑體'
+	                   
+	                }
+	            }
+	        },
+	        yAxis: {
+	            min: 0,
+	            title: {
+	                text: '%'
+	            }
+	        },
+	        legend: {
+	            enabled: false
+	        },
+	        tooltip: {
+	            pointFormat: '<b>{point.y:.2f}</b>%'
+	        },
+	        series: [{
+	            name: 'Population',
+	            color:'#CC9900',
+	            data: [
+	                ['民國97年', 7.19],
+	                ['民國98年', 1.65],
+	                ['民國99年', 0.83],
+	                           ],
+	            dataLabels: {
+	                enabled: false,
+	                rotation: -90,
+	                color: '#FFFFFF',
+	                align: 'right',
+	                format: '{point.y:.1f}', // one decimal
+	                y: 10, // 10 pixels down from the top
+	                style: {
+	                    fontSize: '13px',
+	                    fontFamily: 'Verdana, sans-serif'
+	                }
+	            }
+	        }]
+	    });
 
 		/*$(function () {
 		    $('#all-event-statistic').highcharts({

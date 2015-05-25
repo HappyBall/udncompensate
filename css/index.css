@@ -33,7 +33,7 @@ header{
 	cursor: pointer;
 }
 
-#header-nav-3{
+#header-nav-4{
 	margin-right: 0;
 }
 
@@ -305,10 +305,18 @@ hr {
 	margin-top: 100px;
 }
 
-.highcharts-block{
-	width: 50%;
+.main-highcharts-chart-block{
 	display: table;
+	width: 50%;
 	float: left;
+}
+
+.highcharts-block{
+	width: 100%;
+	display: table;
+	/*float: left;*/
+	margin-left: 3%;
+	height: 500px;
 }
 
 .main-highcharts-text-block{
@@ -317,18 +325,23 @@ hr {
 	font-family: 微軟正黑體;
 	display: table;
 	width: 47%;
-	margin-left: 3%;
+	/*margin-left: 3%;*/
 }
 
 .main-highcharts-title{
 	font-size: 22px;
 	font-weight: bold;
+	margin-top: 30px;
+}
+
+.main-highcharts-title:first-child{
+	margin-top: 0;
 }
 
 .main-highcharts-text{
 	font-size: 20px;
 	line-height: 30px;
-	margin-top: 10px;
+	margin-top: 20px;
 }
 
 #main-chart-highcharts-2{
@@ -446,6 +459,17 @@ hr {
 	line-height: 30px;
 	color: #ededed;
 	margin-top: 30px;
+}
+
+#govern-peo{
+	font-size: 22px;
+	font-weight: bold;
+	/*line-height: 30px;*/
+	margin-top: 30px;
+	margin-bottom: 20px;
+	/*width: 60%;*/
+	color: #ededed;
+	font-family: 微軟正黑體;
 }
 
 .org-0{
