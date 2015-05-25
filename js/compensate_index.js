@@ -266,7 +266,7 @@ $(document).ready(function(){
 		                rotation: 0,
 		                color: '#FFFFFF',
 		                align: 'right',
-		                format: '{point.y:.0f}', // one decimal
+		                format: '{point.y:,.0f}', // one decimal
 		                y: 0, // 10 pixels down from the top
 		                style: {
 		                    fontSize: '10px',
@@ -394,7 +394,7 @@ $(document).ready(function(){
                     cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
-	                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+	                    format: '<b>{point.name}</b> {point.y} 件',
 	                    style: {
 	                        color: '#ededed',
 	                        fontSize: '17px'
