@@ -10,7 +10,7 @@ header{
 
 .header-container{
 	width: 100%;
-	max-width: 800px;
+	max-width: 1000px;
 	display: table;
 	margin: auto;
 }
@@ -19,8 +19,13 @@ header{
 	float: left;
 }
 
+#header-udn-logo{
+	margin-top: 10px;
+}
+
 #header-newmedia-logo{
 	margin-top: 10px;
+	margin-left: 30px;
 }
 
 .header-nav{
@@ -88,7 +93,7 @@ hr {
 }
 
 #icons-container{
-	margin-top: -30px;
+	/*margin-top: -30px;*/
 }
 
 .icon-block{
@@ -329,7 +334,7 @@ hr {
 }
 
 .main-highcharts-title{
-	font-size: 22px;
+	font-size: 25px;
 	font-weight: bold;
 	margin-top: 30px;
 }
@@ -346,6 +351,18 @@ hr {
 
 #main-chart-highcharts-2{
 	margin-top: 60px;
+}
+
+.ps{
+	font-size: 14px;
+	color: #ededed;
+	text-align: center;
+}
+
+#debate-img-ps{
+	float: right;
+	margin-top: 10px;
+	margin-right: 28px;
 }
 
 .debate-outer{
@@ -366,7 +383,7 @@ hr {
 }
 
 .debate-big-title{
-	font-size: 30px;
+	font-size: 36px;
 	font-weight: bold;
 	display: table;
 	margin-top: 100px;
@@ -400,7 +417,7 @@ hr {
 }
 
 .debate-title{
-	font-size: 22px;
+	font-size: 25px;
 	margin-top: 20px;
 	font-weight: bold;
 }
@@ -429,7 +446,7 @@ hr {
 }
 
 .last-highcharts-title{
-	font-size: 30px;
+	font-size: 36px;
 	font-weight: bold;
 	font-family: 微軟正黑體;
 	color: #ededed;
@@ -462,7 +479,7 @@ hr {
 }
 
 #govern-peo{
-	font-size: 22px;
+	font-size: 25px;
 	font-weight: bold;
 	/*line-height: 30px;*/
 	margin-top: 30px;
@@ -470,6 +487,16 @@ hr {
 	/*width: 60%;*/
 	color: #ededed;
 	font-family: 微軟正黑體;
+}
+
+.go-top-img{
+	display: none;
+	/*float: right;*/
+	cursor: pointer;
+	/*margin-right: 20px;*/
+	position: fixed;
+	bottom: 20px;
+	right: 110px;
 }
 
 .org-0{

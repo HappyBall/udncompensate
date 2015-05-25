@@ -12,7 +12,7 @@ var y = y_init;
 var y_count = 0;
 
 var svg_height = 750;
-var svg_height_reason = 1350;
+var svg_height_reason = 1450;
 
 var debate_img_focused = 1;
 
@@ -370,12 +370,17 @@ $(document).ready(function(){
 		    });*/
 		});
 
+		Highcharts.getOptions().plotOptions.pie.colors = (function () {
+	        return ['#cc9900', 'grey'];
+	    }());
+
 		$('#all-event-statistic').highcharts({
             chart: {
                 backgroundColor: '#111111',
                 plotBorderWidth: null,
                 plotShadow: false
             },
+            color:['#cc9900', 'red'],
             credits:{
 		       	enabled: false
 		    },
@@ -468,12 +473,12 @@ $(document).ready(function(){
 	                ['民國99年', 0.83],
 	                           ],
 	            dataLabels: {
-	                enabled: false,
-	                rotation: -90,
+	                enabled: true,
+	                rotation: 0,
 	                color: '#FFFFFF',
-	                align: 'right',
-	                format: '{point.y:.1f}', // one decimal
-	                y: 10, // 10 pixels down from the top
+	                align: 'center',
+	                format: '{point.y:.1f}%', // one decimal
+	                y: 30, // 10 pixels down from the top
 	                style: {
 	                    fontSize: '13px',
 	                    fontFamily: 'Verdana, sans-serif'
@@ -852,8 +857,8 @@ $(document).ready(function(){
 
 					if(j == reason_class_list[reason_list[i]].length - 1){
 						if(i < Object.keys(reason_class_list).length - 1)
-							reason_text_y_list[i + 1] = reason_class_y + y_dis + 50;
-						y_now = reason_class_y + y_dis*2.5;
+							reason_text_y_list[i + 1] = reason_class_y + y_dis + 65;
+						y_now = reason_class_y + y_dis*3;
 					}
 				}
 
@@ -873,7 +878,7 @@ $(document).ready(function(){
 				svg.append("text").text(reson_littletext_event[i] + '件')
 				.attr({
 					'class': "reason-text",
-					'x': 45 + reason_list[i].length*40 + 30,
+					'x': 255,//45 + reason_list[i].length*40 + 30,
 					'y': reason_text_y_list[i] - 15,
 					'fill': "#ededed"
 				});
@@ -881,7 +886,7 @@ $(document).ready(function(){
 				svg.append("text").text('賠償金額' + reson_littletext_money[i] + '元')
 				.attr({
 					'class': "reason-text",
-					'x': 45 + reason_list[i].length*40 + 30 + reson_littletext_event[i].length*25 + 70,
+					'x': 360,//45 + reason_list[i].length*40 + 30 + reson_littletext_event[i].length*25 + 70,
 					'y': reason_text_y_list[i] - 15,
 					'fill': "#ededed"
 				});
@@ -991,9 +996,21 @@ $(document).ready(function(){
 			debate_img_focused = pic_focus(window.scrollY+320);
 			$("#debate-img-" + debate_img_focused).css("opacity", 1);
 		}
+
+		if ( $(window).scrollTop() >= $(".main-chart-highcharts").offset().top ){
+			$(".go-top-img").fadeIn();
+		}
+		else{
+			$(".go-top-img").fadeOut();
+		}
 		// console.log(window.scrollY+320);
 		// console.log($("#debate-img-1").offset().top)
 	}
+
+	$(".go-top-img").click(function(){
+		$('html, body').animate({scrollTop:0}, 800);
+		// $(".go-top-img").fadeOut();
+	});
 
 	/*$(".scale-btn").click(function(){
 		var s = parseInt($(this).attr('id').split('-')[2]);
