@@ -233,7 +233,7 @@ $(document).ready(function(){
 		            enabled: false
 		        },
 		        tooltip: {
-		            pointFormat: ' <b>{point.y:.0f} </b>件'
+		            pointFormat: ' <b>{point.y:.0f} </b>元'
 		        },
 		        series: [{
 		            color:'#CC9900',          
