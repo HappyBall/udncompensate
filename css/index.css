@@ -356,13 +356,16 @@ hr {
 .ps{
 	font-size: 14px;
 	color: #ededed;
-	text-align: center;
+	/*text-align: center;*/
+	display: table;
+	float: right;
+	margin-right: 18px;
 }
 
 #debate-img-ps{
 	float: right;
 	margin-top: 10px;
-	margin-right: 28px;
+	margin-right: 66px;
 }
 
 .debate-outer{
