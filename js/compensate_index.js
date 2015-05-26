@@ -146,7 +146,9 @@ $(document).ready(function(){
 		                style: {
 		                	color: '#ededed'
 		                }
-		            }
+		            },
+		            gridLineWidth: 0,
+		            minorGridLineWidth: 0
 		        },
 		        legend: {
 		            enabled: false
@@ -155,7 +157,7 @@ $(document).ready(function(){
 		            pointFormat: ' <b>{point.y:.0f} </b>件'
 		        },
 		        series: [{
-		            color:'#CC9900',          
+		            color:'#d16319',          
 		            
 		           /* name: 'Population',*/
 		            data: [
@@ -187,10 +189,16 @@ $(document).ready(function(){
 		                y: 0, // 10 pixels down from the top
 		                style: {
 		                    fontSize: '10px',
-		                    fontFamily: '微軟正黑體'
+		                    fontFamily: '微軟正黑體',
+		                    textShadow: 'none'
 		                }
 		            }
-		        }]
+		        }],
+		        plotOptions: {
+		            series: {
+		                borderWidth: 0
+		            }
+		        }
 		    });
 
 			$('#all-money-chart').highcharts({
@@ -227,7 +235,9 @@ $(document).ready(function(){
 		                },
 		            },
 		            type: 'logarithmic',
-		            tickInterval: 1
+		            tickInterval: 1,
+		            gridLineWidth: 0,
+		            minorGridLineWidth: 0
 		        },
 		        legend: {
 		            enabled: false
@@ -236,7 +246,7 @@ $(document).ready(function(){
 		            pointFormat: ' <b>{point.y:.0f} </b>元'
 		        },
 		        series: [{
-		            color:'#CC9900',          
+		            color:'#d16319',          
 		            
 		           /* name: 'Population',*/
 		            data: [
@@ -270,108 +280,22 @@ $(document).ready(function(){
 		                y: 0, // 10 pixels down from the top
 		                style: {
 		                    fontSize: '10px',
-		                    fontFamily: '微軟正黑體'
+		                    fontFamily: '微軟正黑體',
+		                    textShadow: 'none'
 		                }
 		            }
-		        }]
-		    });
-
-		    /*$('#all-event-chart').highcharts({
-		        chart: {
-		        	backgroundColor: '#111111',
-		            type: 'column'
-		        },
-		        credits:{
-		        	enabled: false
-		        },
-		        title: {
-		            text: '各中央機關10年國賠件數',
-		            style:{
-		            	color: '#ededed'
-		            }
-		        },
-		        xAxis: {
-		            categories: ['各中央機關']
-		        },
-		        yAxis: {
-		            title: {
-		                text: '件',
-		                style: {
-		                	color: '#ededed'
-		                },
-		                rotation: 0
-		            },
-		            type: 'linear',
-		            max: 200
-		        },
-		        series: all_org_event,
-		        legend:{
-		        	itemStyle:{
-		        		color: '#ededed'
-		        	},
-		            itemHoverStyle: {
-		                color: '#ededed'
-		            },
-		            itemMarginTop: 10
-		        },
-		         plotOptions: {
+		        }],
+		        plotOptions: {
 		            series: {
-		                groupPadding: 0,
 		                borderWidth: 0
 		            }
 		        }
-
 		    });
 
-		    $('#all-money-chart').highcharts({
-		        chart: {
-		        	backgroundColor: '#111111',
-		            type: 'column'
-		        },
-		        credits:{
-		        	enabled: false
-		        },
-		        title: {
-		            text: '各中央機關10年國賠金額',
-		            style:{
-		            	color: '#ededed'
-		            }
-		        },
-		        xAxis: {
-		            categories: ['各中央機關']
-		        },
-		        yAxis: {
-		            title: {
-		                text: '元',
-		                style: {
-		                	color: '#ededed'
-		                },
-		                rotation: 0
-		            },
-		            type: 'logarithmic',
-		            tickInterval: 1
-		        },
-		        series: all_org_money,
-		        legend:{
-		        	itemStyle:{
-		        		color: '#ededed'
-		        	},
-		            itemHoverStyle: {
-		                color: '#ededed'
-		            },
-		            itemMarginTop: 10
-		        },
-		         plotOptions: {
-		            series: {
-		                groupPadding: 0,
-		                borderWidth: 0
-		            }
-		        }
-		    });*/
 		});
 
 		Highcharts.getOptions().plotOptions.pie.colors = (function () {
-	        return ['#cc9900', 'grey'];
+	        return ['#d16319', 'grey'];
 	    }());
 
 		$('#all-event-statistic').highcharts({
@@ -380,7 +304,7 @@ $(document).ready(function(){
                 plotBorderWidth: null,
                 plotShadow: false
             },
-            color:['#cc9900', 'red'],
+            // color:['#cc9900', 'red'],
             credits:{
 		       	enabled: false
 		    },
@@ -396,7 +320,7 @@ $(document).ready(function(){
             plotOptions: {
                 pie: {
                     // allowPointSelect: true,
-                    cursor: 'pointer',
+                    // cursor: 'pointer',
                     dataLabels: {
                         enabled: true,
 	                    format: '<b>{point.name}</b> {point.y} 件',
@@ -456,7 +380,9 @@ $(document).ready(function(){
 	            min: 0,
 	            title: {
 	                text: '%'
-	            }
+	            },
+	            gridLineWidth: 0,
+		        minorGridLineWidth: 0
 	        },
 	        legend: {
 	            enabled: false
@@ -466,7 +392,7 @@ $(document).ready(function(){
 	        },
 	        series: [{
 	            name: 'Population',
-	            color:'#CC9900',
+	            color:'#d16319',
 	            data: [
 	                ['民國97年', 7.19],
 	                ['民國98年', 1.65],
@@ -481,153 +407,17 @@ $(document).ready(function(){
 	                y: 30, // 10 pixels down from the top
 	                style: {
 	                    fontSize: '13px',
-	                    fontFamily: 'Verdana, sans-serif'
+	                    fontFamily: 'Verdana, sans-serif',
+	                    textShadow: 'none'
 	                }
 	            }
-	        }]
+	        }],
+	        plotOptions: {
+		        series: {
+		            borderWidth: 0
+	            }
+	        }
 	    });
-
-		/*$(function () {
-		    $('#all-event-statistic').highcharts({
-		        chart: {
-		            type: 'bar',
-		            backgroundColor: '#111111'
-		        },
-		        credits:{
-		        	enabled: false
-		        },
-		        title: {
-		            text: '全國與中央機關歷年國賠情形',
-		            style:{
-		            	color: '#ededed'
-		            }
-		        },
-		        xAxis: {
-		            categories: ['全國', '中央機關']
-		        },
-		        yAxis: {
-		            min: 0,
-		            title: {
-		                text: '件',
-		                style:{
-		                	'color': "#ededed"
-		                }
-		            },
-		            gridLineWidth: 0
-		        },
-		        legend: {
-		            reversed: true,
-		            itemStyle:{
-		            	'color':'#ededed'
-		            },
-		            itemHoverStyle: {
-		                color: '#ededed'
-		            }
-		        },
-		        plotOptions: {
-		            series: {
-		                stacking: 'normal',
-		                borderWidth: 0
-		            }
-		        },
-		        series: [{
-		            name: '賠償件數',
-		            color: '#80ABE8',
-		            data: [5618, 721]
-		        }, {
-		            name: '受理件數',
-		            color: '#80E8B1',
-		            data: [40845, 10926]
-		        }],
-		        labels: {
-		        	items: [{
-		        		html: '<div>成功比率</div><div>14%</div>',
-		        		style:{
-		        			left: '280px',
-		        			top: '140px'
-		        		}
-		        	},
-		        	{
-		        		html: '<div>成功比率</div><div>7%</div>',
-		        		style:{
-		        			left: '140px',
-		        			top: '210px'
-		        		}
-		        	}],
-		        	style: {
-		        		color: '#ededed',
-		        		'font-size': '25px'
-		        	}
-		        }
-		    });*/
-
-		    /*$('#all-event-statistic-yr').highcharts({
-		    	chart: {
-		    		backgroundColor: '#111111'
-		    	},
-		    	credits:{
-		        	enabled: false
-		        },
-		        title: {
-		            text: '民國71~103年國賠受理件數與賠償件數',
-		            style:{
-		            	color: '#ededed'
-		            }
-		        },*/
-		       /* subtitle: {
-		            text: 'Source: WorldClimate.com',
-		            x: -20
-		        },*/
-		        /*xAxis: {
-		            categories: ['71', '72', '73', '74', '75', '76','77', '78', '79', '80', '81', '82','83', '84', '85', '86', '87', '88', '89', '90','91', '92', '93','94', '95', '96','97', '98', '99','100', '101', '102','103']
-		        },
-		        yAxis: {
-		            title: {
-		                text: '件',
-		                style: {
-		                	color: '#ededed'
-		                },
-		                rotation: 0
-		            },
-		            plotLines: [{
-		                value: 0,
-		                width: 1,
-		                color: '#808080'
-		            }],
-		            gridLineWidth: 0
-		        },
-		        tooltip: {
-		            valueSuffix: '件'
-		        },
-		        legend: {
-		            borderWidth: 0,
-		            itemStyle:{
-		            	color: '#ededed'
-		            },
-		            itemHoverStyle: {
-		                color: '#ededed'
-		            }
-		        },
-		        series: [{
-		            color:'#9B5C32',
-		            name: '全國新收案件數',
-		            data: [405,324,455,382,366,345,430,528,457,464,667,687,912,881,1068,1242,1128,1305,2012,1728,1206,1883,2002,1794,1419,2344,1990,1886,2469,1719,2220,1951,2176]
-		        }, {
-		            name: '全國總賠償件數',
-		             color:'#228B99',
-		            data: [20,33,138,45,60,76,85,137,97,118,127,130,161,173,136,117,157,124,234,192,186,234,191,258,236,214,261,264,331,280,292,259,252]
-		        }, {
-		            name: '中央機關新收案件數',
-		            color:'#FFBD48',
-		            data: [89,48,43,44,38,50,61,68,61,66,45,85,115,97,186,138,163,174,647,618,400,425,442,544,438,1193,743,700,646,639,643,601,676]
-		        }, {
-		            name: '中央機關總賠償件數',
-		             color:'#66CFDD',
-		            data: [0,2,1,1,3,0,5,12,4,13,9,11,5,6,12,4,9,5,56,69,48,31,26,51,15,36,37,43,48,77,32,23,27]
-		        }]
-		    });*/
-
-		// });
 
 	});
 

@@ -56,6 +56,10 @@ hr {
 	margin-top: 50px;
 }
 
+text{
+	text-shadow: none;
+}
+
 .container{
 	width: 100%;
 	max-width: 1100px;
@@ -72,8 +76,8 @@ hr {
 
 .title{
 	font-family: 微軟正黑體;
-	color: #cc9900;
-	font-size: 70px;
+	color: #ededed;
+	font-size: 60px;
 }
 
 .editor-src{
