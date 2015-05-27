@@ -56,10 +56,6 @@ hr {
 	margin-top: 50px;
 }
 
-text{
-	text-shadow: none;
-}
-
 .container{
 	width: 100%;
 	max-width: 1100px;
@@ -207,7 +203,7 @@ text{
 	margin-left: 0;
 }
 
-#sort-by-date{
+#sort-by-class{
 	border-bottom: 2px solid #ededed;
 }
 
